@@ -6,10 +6,11 @@ const posts = require('./routes/api/posts');
 const profile = require('./routes/api/profile');
 const mongoose = require('mongoose');
 
+
 mongoose.Promise = global.Promise;
-const DB_URL = require('./config/keys').MONGO_URI;
+const { MONGO_URI } = require('./config/keys');
 mongoose
-    .connect(DB_URL)
+    .connect(MONGO_URI)
     .then(() => console.log('Mongo database connected'))
     .catch(err => console.error(`error to connect database ,${err}`));
 
@@ -20,7 +21,9 @@ app.use(cors());
 app.use(bodyParser.json({ type: "*/*" }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/api/users', users);
+
+
+app.use('/api/user', users);
 app.use('/api/posts', posts);
 app.use('/api/profile', profile);
 
