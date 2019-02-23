@@ -18,6 +18,38 @@ module.exports = {
         }
 
     },
+    getProfileHandle: async (req, res, next) => {
+        const errors = {};
+        const { handle } = req.params;
+        try {
+            const profile = await Profile
+                .findOne({ handle })
+                .populate('user', ['name', 'avatar']);
+            if (!profile) {
+                errors.noProfile = 'No profile for this user';
+                return res.status(404).json(errors);
+            }
+            res.json(profile);
+        } catch (error) {
+            res.status(404).json(error);
+        }
+    },
+    getProfileByUserId: async (req, res, next) => {
+        const errors = {};
+        const user = req.params.userId;
+        try {
+            const profile = await Profile
+                .findOne({ user })
+                .populate('user', ['name', 'avatar']);
+            if (!profile) {
+                errors.noProfile = 'No profile for this user';
+                return res.status(404).json(errors);
+            }
+            res.json(profile);
+        } catch (error) {
+            res.status(404).json(error);
+        }
+    },
     createOrUpdateProfile: async (req, res, next) => {
         const errors = {};
         const user = req.user._id
