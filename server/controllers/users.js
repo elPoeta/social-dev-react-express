@@ -37,7 +37,7 @@ module.exports = {
         res.status(200).json({ token });
     },
     login: async (req, res, next) => {
-        const token = signToken(req.user);
+        const token = `Bearer ${signToken(req.user)}`;
         res.status(200).json({ token });
     },
     current: async (req, res, next) => {
