@@ -47,7 +47,22 @@ module.exports = {
             }
             res.json(profile);
         } catch (error) {
-            res.status(404).json(error);
+            res.json({ Profile: 'No profile for this user' });
+        }
+    },
+    getAllProfiles: async (req, res, next) => {
+        const errors = {};
+        try {
+            const profile = await Profile
+                .find()
+                .populate('user', ['name', 'avatar']);
+            if (!profile) {
+                errors.noProfile = 'No profiles yet';
+                return res.status(404).json(errors);
+            }
+            res.json(profile);
+        } catch (error) {
+            res.json({ Profile: 'No profiles yet' });
         }
     },
     createOrUpdateProfile: async (req, res, next) => {
