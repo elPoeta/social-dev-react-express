@@ -109,5 +109,51 @@ module.exports = {
         } catch (error) {
             res.status(404).json(error);
         }
+    },
+    addExperience: async (req, res, next) => {
+        const errors = {};
+        const { title, company,
+            location, from, to,
+            current, description } = req.body;
+        const newExperience = {
+            title,
+            company,
+            location,
+            from,
+            to,
+            current,
+            description
+        };
+        try {
+            const profile = await Profile.findOne({ user: req.user._id });
+            profile.experience.unshift(newExperience);
+            const updateProfile = await profile.save();
+            res.json(updateProfile);
+        } catch (error) {
+            res.status(404).json(error);
+        }
+    },
+    addEducation: async (req, res, next) => {
+        const errors = {};
+        const { school, degree,
+            fieldofstudy, from, to,
+            current, description } = req.body;
+        const newEducation = {
+            school,
+            degree,
+            fieldofstudy,
+            from,
+            to,
+            current,
+            description
+        };
+        try {
+            const profile = await Profile.findOne({ user: req.user._id });
+            profile.education.unshift(newEducation);
+            const updateProfile = await profile.save();
+            res.json(updateProfile);
+        } catch (error) {
+            res.status(404).json(error);
+        }
     }
 }
