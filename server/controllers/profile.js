@@ -155,5 +155,59 @@ module.exports = {
         } catch (error) {
             res.status(404).json(error);
         }
+    },
+    deleteProfile: async (req, res, next) => {
+        const errors = {};
+        try {
+            const profile = await Profile.findOneAndRemove({ user: req.user._id });
+            if (!profile) {
+                error.noProfile = 'Profile not found';
+                return res.json(errors);
+            }
+            const user = await User.findOneAndRemove({ _id: req.user._id });
+            if (!user) {
+                error.noUser = 'User not found';
+                return res.json(errors);
+            }
+            res.json({ success: true })
+        } catch (error) {
+            res.status(404).json(error);
+        }
+    },
+    deleteExperience: async (req, res, next) => {
+        const errors = {};
+        const exp_id = req.params.exp_id;
+        try {
+            const profile = await Profile.findOne({ user: req.user._id });
+            if (!profile) {
+                error.noProfile = 'Profile not found';
+                return res.json(errors);
+            }
+            const remove = profile.experience.map(p => p._id).indexOf(exp_id);
+            profile.experience.splice(remove, 1);
+            await profile.save();
+            res.json(profile);
+
+        } catch (error) {
+            res.status(404).json(error);
+        }
+    },
+    deleteEducation: async (req, res, next) => {
+        const errors = {};
+        const edu_id = req.params.edu_id;
+        try {
+            const profile = await Profile.findOne({ user: req.user._id });
+            if (!profile) {
+                error.noProfile = 'Profile not found';
+                return res.json(errors);
+            }
+            const remove = profile.education.map(p => p._id).indexOf(edu_id);
+            profile.education.splice(remove, 1);
+            await profile.save();
+            res.json(profile);
+
+        } catch (error) {
+            res.status(404).json(error);
+        }
     }
 }
