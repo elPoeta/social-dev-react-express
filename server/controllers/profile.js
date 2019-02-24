@@ -126,7 +126,8 @@ module.exports = {
         };
         try {
             const profile = await Profile.findOne({ user: req.user._id });
-            profile.experience.unshift(newExperience);
+            //profile.experience.unshift(newExperience);
+            profile.experience = [...profile.experience, newExperience];
             const updateProfile = await profile.save();
             res.json(updateProfile);
         } catch (error) {
@@ -149,7 +150,8 @@ module.exports = {
         };
         try {
             const profile = await Profile.findOne({ user: req.user._id });
-            profile.education.unshift(newEducation);
+            //profile.education.unshift(newEducation);
+            profile.education = [...profile.education, newEducation];
             const updateProfile = await profile.save();
             res.json(updateProfile);
         } catch (error) {
@@ -183,8 +185,8 @@ module.exports = {
                 error.noProfile = 'Profile not found';
                 return res.json(errors);
             }
-            const remove = profile.experience.map(p => p._id).indexOf(exp_id);
-            profile.experience.splice(remove, 1);
+            profile.experience = [...profile.experience.filter(p => p._id != exp_id)];
+
             await profile.save();
             res.json(profile);
 
@@ -201,8 +203,8 @@ module.exports = {
                 error.noProfile = 'Profile not found';
                 return res.json(errors);
             }
-            const remove = profile.education.map(p => p._id).indexOf(edu_id);
-            profile.education.splice(remove, 1);
+            profile.education = [...profile.education.filter(p => p._id != edu_id)];
+
             await profile.save();
             res.json(profile);
 
