@@ -6,7 +6,7 @@ const { getProfile, getProfileHandle, getProfileByUserId,
 const passport = require('passport');
 require('../../services/passport');
 const requireAuth = passport.authenticate('jwt', { session: false });
-const requireSignIn = passport.authenticate('local', { session: false });
+
 
 router.get('/', requireAuth, getProfile);
 router.get('/handle/:handle', getProfileHandle);

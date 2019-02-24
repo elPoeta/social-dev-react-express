@@ -126,7 +126,6 @@ module.exports = {
         };
         try {
             const profile = await Profile.findOne({ user: req.user._id });
-            //profile.experience.unshift(newExperience);
             profile.experience = [...profile.experience, newExperience];
             const updateProfile = await profile.save();
             res.json(updateProfile);
@@ -150,7 +149,6 @@ module.exports = {
         };
         try {
             const profile = await Profile.findOne({ user: req.user._id });
-            //profile.education.unshift(newEducation);
             profile.education = [...profile.education, newEducation];
             const updateProfile = await profile.save();
             res.json(updateProfile);
@@ -185,7 +183,7 @@ module.exports = {
                 error.noProfile = 'Profile not found';
                 return res.json(errors);
             }
-            profile.experience = [...profile.experience.filter(p => p._id != exp_id)];
+            profile.experience = [...profile.experience.filter(p => p._id.toString() !== exp_id)];
 
             await profile.save();
             res.json(profile);
@@ -203,7 +201,7 @@ module.exports = {
                 error.noProfile = 'Profile not found';
                 return res.json(errors);
             }
-            profile.education = [...profile.education.filter(p => p._id != edu_id)];
+            profile.education = [...profile.education.filter(p => p._id.toString() !== edu_id)];
 
             await profile.save();
             res.json(profile);
