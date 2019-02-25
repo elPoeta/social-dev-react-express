@@ -7,16 +7,16 @@ class Header extends Component {
         return (
             <div>
                 <header>
-                    <h1>Social-Dev's</h1>
+                    <h1><Link to='/'>Social-Dev's</Link></h1>
+                    <ul><li><Link to='/profiles'>Developers</Link></li></ul>
                     <nav>
                         <ul>
-                            <li><Link to='/'>Home</Link></li>
                             <li><Link to='/signup'>Sign Up</Link></li>
                             <li><Link to='/login'>Login</Link></li>
                         </ul>
                     </nav>
                 </header>
-            </div>
+            </div >
         )
     }
 }

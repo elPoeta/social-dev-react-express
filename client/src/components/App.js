@@ -8,7 +8,6 @@ const App = props => (
     <div className="App">
       <Header />
       {props.children}
-
     </div>
     <Footer />
   </div>

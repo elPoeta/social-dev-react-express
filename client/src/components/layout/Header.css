@@ -1,6 +1,6 @@
 header{
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 200px 1fr 1fr;
     grid-template-rows: 60px;
     background-color: #444;
     color: #fff;
@@ -18,13 +18,19 @@ h1 {
     font-size: 1.4em;
     font-weight: 900;
 }
-header nav ul li{
+header ul{
+    justify-self: flex-start;
+}
+header nav{
+    display: flex;
+}
+header ul li{
     display: inline;
     list-style: none;
     padding: 10px;
 }
 header nav{
-    justify-self: end;
+   justify-self: flex-end;
 }
 header  a{
     text-decoration: none;
