@@ -6,7 +6,7 @@ module.exports = {
         const errors = {};
         try {
             const profile = await Profile
-                .findOne({ user: req.user._id })
+                .findOne({ user: req.user.id })
                 .populate('user', ['name', 'avatar']);
             if (!profile) {
                 errors.noProfile = 'No profile for this user';
@@ -67,7 +67,7 @@ module.exports = {
     },
     createOrUpdateProfile: async (req, res, next) => {
         const errors = {};
-        const user = req.user._id
+        const user = req.user.id
         const { handle, company, website, location,
             status, bio, githubuser, skills, linkedin,
             twitter, youtube, facebook } = req.body;
@@ -125,7 +125,7 @@ module.exports = {
             description
         };
         try {
-            const profile = await Profile.findOne({ user: req.user._id });
+            const profile = await Profile.findOne({ user: req.user.id });
             profile.experience = [...profile.experience, newExperience];
             const updateProfile = await profile.save();
             res.json(updateProfile);
@@ -148,7 +148,7 @@ module.exports = {
             description
         };
         try {
-            const profile = await Profile.findOne({ user: req.user._id });
+            const profile = await Profile.findOne({ user: req.user.id });
             profile.education = [...profile.education, newEducation];
             const updateProfile = await profile.save();
             res.json(updateProfile);
@@ -159,12 +159,12 @@ module.exports = {
     deleteProfile: async (req, res, next) => {
         const errors = {};
         try {
-            const profile = await Profile.findOneAndRemove({ user: req.user._id });
+            const profile = await Profile.findOneAndRemove({ user: req.user.id });
             if (!profile) {
                 error.noProfile = 'Profile not found';
                 return res.json(errors);
             }
-            const user = await User.findOneAndRemove({ _id: req.user._id });
+            const user = await User.findOneAndRemove({ _id: req.user.id });
             if (!user) {
                 error.noUser = 'User not found';
                 return res.json(errors);
@@ -178,7 +178,7 @@ module.exports = {
         const errors = {};
         const exp_id = req.params.exp_id;
         try {
-            const profile = await Profile.findOne({ user: req.user._id });
+            const profile = await Profile.findOne({ user: req.user.id });
             if (!profile) {
                 error.noProfile = 'Profile not found';
                 return res.json(errors);
@@ -196,7 +196,7 @@ module.exports = {
         const errors = {};
         const edu_id = req.params.edu_id;
         try {
-            const profile = await Profile.findOne({ user: req.user._id });
+            const profile = await Profile.findOne({ user: req.user.id });
             if (!profile) {
                 error.noProfile = 'Profile not found';
                 return res.json(errors);
