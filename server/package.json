@@ -4,14 +4,18 @@
   "description": "Social Developers Express server",
   "main": "index.js",
   "scripts": {
-    "start-dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client-install": "npm install --prefix ../client",
+    "server-dev": "nodemon index.js",
+    "client-dev": "npm start --prefix ../client",
+    "start-dev": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
+    "start": "node index.js"
   },
   "author": "Leonardo Tosetto (leonardo.a.tosetto@gmail.com)",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "gravatar": "^1.8.0",
