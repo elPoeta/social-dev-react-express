@@ -30,14 +30,20 @@
         position: relative;
         top: 50px;
     }
- .landing ul li button{
+ .landing ul li a{
+  text-decoration: none;   
   padding: 10px;
-  width: 90px;
+  width: 100px;
   border-radius: 15px;
   font-size: .8em; 
  }
- .landing ul li:nth-child(1) button{
+ .landing ul li:nth-child(1) a{
      background-color:rgb(15, 88, 129);
      color: #fff;
      
  }
+ .landing ul li:nth-child(2) a{
+    background-color:rgb(166, 203, 224);
+    color: #000;
+    
+}
