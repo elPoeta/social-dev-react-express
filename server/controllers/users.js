@@ -36,17 +36,29 @@ module.exports = {
 
         const token = `Bearer ${signToken(newUser)}`;
 
-        res.status(200).json({ token });
+        res.status(200).json(
+            {
+                user:
+                {
+                    id: newUser._id,
+                    name: newUser.name,
+                    avatar: newUser.avatar,
+                    jwt: token
+                }
+            });
     },
     login: async (req, res, next) => {
+        const { id, name, email, avatar } = req.user;
         const token = `Bearer ${signToken(req.user)}`;
-        res.status(200).json({ token });
-    },
-    current: async (req, res, next) => {
-        const { _id, name, email, avatar, date } = req.user;
-        res.status(200).json({
-            secret: "Welcome! to the super top secret page you are authenticated",
-            _id, name, email, avatar, date
-        });
+        res.status(200).json(
+            {
+                user:
+                {
+                    id,
+                    name,
+                    avatar,
+                    jwt: token
+                }
+            });
     }
 }

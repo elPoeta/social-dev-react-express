@@ -2,7 +2,7 @@ import { ERROR_MESSAGE, AUTH_USER } from "../actions/types";
 
 const initialState = {
   isAuthenticated: false,
-  jwt: "",
+  user: {},
   errorMessage: ""
 };
 
@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: action.payload.isAuthenticated,
-        jwt: action.payload.token,
+        user: { ...action.payload.user },
         errorMessage: ''
       };
     case ERROR_MESSAGE:

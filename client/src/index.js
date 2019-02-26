@@ -16,16 +16,17 @@ import rootReducers from "./reducers";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
+const middleware = [thunk];
 const store = createStore(
   rootReducers,
   {
     auth: {
       isAuthenticated: localStorage.getItem("token") ? true : false,
-      jwt: localStorage.getItem("token")
+      user: { jwt: localStorage.getItem("token") }
     }
   },
   compose(
-    applyMiddleware(thunk),
+    applyMiddleware(...middleware),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
