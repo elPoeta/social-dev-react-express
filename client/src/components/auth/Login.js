@@ -6,15 +6,11 @@ import CustomInput from "./CustomInput";
 import { login } from "../../actions/auth";
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+
   componentDidMount() {
     document.querySelector("body").style.backgroundColor = "#F1F1F1";
   }
-  async onSubmit(formData) {
-    console.log("F> ", formData);
+  onSubmit = async formData => {
     await this.props.login(formData);
     if (!this.props.errorMessage) {
       this.props.history.push("/profiles");
@@ -22,10 +18,10 @@ class Login extends Component {
   }
   render() {
     const { handleSubmit, errorMessage } = this.props;
-    console.log("prop ", this.props);
     return (
       <div>
         <h2>Login</h2>
+        <p>Connect to Social-dev's</p>
         <div className="form">
           <form onSubmit={handleSubmit(this.onSubmit)}>
             <label>Email</label>

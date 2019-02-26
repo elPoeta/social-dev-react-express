@@ -1,6 +1,7 @@
 import { AUTH_USER, ERROR_MESSAGE } from "./types";
 
 export const signUp = formData => async dispatch => {
+  console.log(formData)
   try {
     const response = await fetch("http://localhost:5000/api/user/register", {
       method: "POST",
@@ -11,11 +12,12 @@ export const signUp = formData => async dispatch => {
     });
     const data = await response;
     if (!data.ok) {
+      console.log('error if ')
       throw Error(data.statusText);
     }
 
     const json = await data.json();
-    console.log(json);
+
 
     dispatch({
       type: AUTH_USER,
@@ -27,16 +29,15 @@ export const signUp = formData => async dispatch => {
   }
 };
 
-export const logout = () => {
+export const logout = () => dispatch => {
   localStorage.removeItem("token");
-  return {
+  dispatch({
     type: AUTH_USER,
-    payload: ""
-  };
+    payload: { isAuthenticated: false, token: '' }
+  });
 };
 
 export const login = formData => async dispatch => {
-  console.log("action ", formData);
   try {
     const response = await fetch("http://localhost:5000/api/user/login", {
       method: "POST",
@@ -46,13 +47,11 @@ export const login = formData => async dispatch => {
       body: JSON.stringify(formData)
     });
     const data = await response;
-    console.log("data ", data);
     if (!data.ok) {
       throw Error(data.statusText);
     }
 
     const json = await data.json();
-    console.log(json);
 
     dispatch({
       type: AUTH_USER,

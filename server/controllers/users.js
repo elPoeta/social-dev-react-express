@@ -14,8 +14,10 @@ signToken = user => {
 module.exports = {
     register: async (req, res, next) => {
 
-        const { name, email, password } = req.body;
-
+        const { name, email, password, confirmPassword } = req.body;
+        if (password !== confirmPassword) {
+            return res.status(403).json({ error: 'Password Error' });
+        }
         const avatar = gravatar.url(email, { s: '200', r: 'pg', d: 'mm' });
 
         const foundUser = await User.findOne({ email });

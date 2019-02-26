@@ -12,7 +12,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: action.payload.isAuthenticated,
-        jwt: action.payload.token
+        jwt: action.payload.token,
+        errorMessage: ''
       };
     case ERROR_MESSAGE:
       return {

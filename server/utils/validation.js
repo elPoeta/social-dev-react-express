@@ -16,7 +16,8 @@ module.exports = {
         registerSchema: Joi.object().keys({
             name: Joi.string().min(2).max(25).required(),
             email: Joi.string().email({ minDomainAtoms: 2 }).required(),
-            password: Joi.string().min(8).required()
+            password: Joi.string().min(8).required(),
+            confirmPassword: Joi.string().min(8).required()
         }),
         loginSchema: Joi.object().keys({
             email: Joi.string().email({ minDomainAtoms: 2 }).required(),

@@ -9,7 +9,7 @@ class SignUp extends Component {
   componentDidMount() {
     document.querySelector("body").style.backgroundColor = "#F1F1F1";
   }
-  async onSubmit(formData) {
+  onSubmit = async formData => {
     await this.props.signUp(formData);
     if (!this.props.errorMessage) {
       this.props.history.push("/profiles");
