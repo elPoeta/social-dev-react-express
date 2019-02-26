@@ -5,7 +5,7 @@ import './Header.css';
 class Header extends Component {
     render() {
         return (
-            <div>
+            <div className='sticky'>
                 <header>
                     <h1><Link to='/'>Social-Dev's</Link></h1>
                     <ul><li><Link to='/profiles'>Developers</Link></li></ul>
