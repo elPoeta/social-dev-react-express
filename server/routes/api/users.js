@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const { register, login } = require('../../controllers/users');
-const { validateBody, schemas } = require('../../utils/validation');
 const passport = require('passport');
 require('../../services/passport');
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignIn = passport.authenticate('local', { session: false });
+const validateRegister = require('../../utils/register');
+const validateLogin = require('../../utils/login');
 
-
-router.post('/register', validateBody(schemas.registerSchema), register);
-router.post('/login', validateBody(schemas.loginSchema), requireSignIn, login);
+router.post('/register', validateRegister, register);
+router.post('/login', validateLogin, requireSignIn, login);
 
 module.exports = router;

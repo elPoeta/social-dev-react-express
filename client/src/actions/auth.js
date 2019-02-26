@@ -11,9 +11,18 @@ export const signUp = formData => async dispatch => {
       body: JSON.stringify(formData)
     });
     const data = await response;
-    if (!data.ok) {
-      throw Error(data.statusText);
-    }
+
+
+    if (data.status === 400 || data.status === 404 || data.status === 403) {
+      const error = await data.json();
+      dispatch({ type: ERROR_MESSAGE, payload: error });
+      //throw Error(data.statusText);
+    } else
+      if (data.status === 401) {
+        const error = { password: 'Access Denied' };
+        dispatch({ type: ERROR_MESSAGE, payload: error });
+      }
+
 
     const json = await data.json();
 
@@ -24,16 +33,9 @@ export const signUp = formData => async dispatch => {
     });
     localStorage.setItem("token", json.user.jwt);
   } catch (error) {
+    console.log('error', error);
     dispatch({ type: ERROR_MESSAGE, payload: "Email is in use" });
   }
-};
-
-export const logout = () => dispatch => {
-  localStorage.removeItem("token");
-  dispatch({
-    type: AUTH_USER,
-    payload: { isAuthenticated: false, user: {} }
-  });
 };
 
 export const login = formData => async dispatch => {
@@ -45,10 +47,18 @@ export const login = formData => async dispatch => {
       },
       body: JSON.stringify(formData)
     });
+
     const data = await response;
-    if (!data.ok) {
-      throw Error(data.statusText);
-    }
+
+    if (data.status === 400 || data.status === 404 || data.status === 403) {
+      const error = await data.json();
+      dispatch({ type: ERROR_MESSAGE, payload: error });
+      //throw Error();
+    } else
+      if (data.status === 401) {
+        const error = { password: 'Access Denied' };
+        dispatch({ type: ERROR_MESSAGE, payload: error });
+      }
 
     const json = await data.json();
 
@@ -58,6 +68,16 @@ export const login = formData => async dispatch => {
     });
     localStorage.setItem("token", json.user.jwt);
   } catch (error) {
-    dispatch({ type: ERROR_MESSAGE, payload: "Wrong Email or Password" });
+    console.log('error', error);
+    // dispatch({ type: ERROR_MESSAGE, payload: "Wrong Email or Password" });
   }
 };
+
+export const logout = () => dispatch => {
+  localStorage.removeItem("token");
+  dispatch({
+    type: AUTH_USER,
+    payload: { isAuthenticated: false, user: {} }
+  });
+};
+

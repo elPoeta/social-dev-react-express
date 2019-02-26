@@ -8,16 +8,20 @@ import { login } from "../../actions/auth";
 class Login extends Component {
 
   componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/profiles');
+    }
     document.querySelector("body").style.backgroundColor = "#F1F1F1";
   }
   onSubmit = async formData => {
+
     await this.props.login(formData);
-    if (!this.props.errorMessage) {
+    if (this.props.auth.isAuthenticated) {
       this.props.history.push("/profiles");
     }
   }
   render() {
-    const { handleSubmit, errorMessage } = this.props;
+    const { handleSubmit, errors } = this.props;
     return (
       <div>
         <h2>Login</h2>
@@ -41,7 +45,7 @@ class Login extends Component {
               placeholder="Password"
               component={CustomInput}
             />
-            <div>{errorMessage}</div>
+            <div>{errors.password}</div>
             <button className="btn btn-login">Login</button>
           </form>
         </div>
@@ -49,11 +53,12 @@ class Login extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    errorMessage: state.auth.errorMessage
-  };
-};
+const mapStateToProps = state => (
+  {
+    auth: state.auth,
+    errors: state.errors
+  }
+);
 export default compose(
   connect(
     mapStateToProps,

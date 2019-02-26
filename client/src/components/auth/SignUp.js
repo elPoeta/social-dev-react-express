@@ -16,7 +16,7 @@ class SignUp extends Component {
     }
   }
   render() {
-    const { handleSubmit, errorMessage } = this.props;
+    const { handleSubmit, errors, user } = this.props;
 
     return (
       <div>
@@ -58,7 +58,7 @@ class SignUp extends Component {
               placeholder="Confirm password"
               component={CustomInput}
             />
-            <div>{errorMessage}</div>
+            <div>{}</div>
             <button className="btn btn-signup">SignUp</button>
           </form>
         </div>
@@ -66,11 +66,12 @@ class SignUp extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    errorMessage: state.auth.errorMessage
-  };
-};
+const mapStateToProps = state => (
+  {
+    auth: state.auth,
+    errors: state.errors
+  }
+);
 export default compose(
   connect(
     mapStateToProps,

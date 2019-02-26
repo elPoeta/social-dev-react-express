@@ -6,15 +6,18 @@ const { getProfile, getProfileHandle, getProfileByUserId,
 const passport = require('passport');
 require('../../services/passport');
 const requireAuth = passport.authenticate('jwt', { session: false });
+const validateProfile = require('../../utils/profile');
+const validateEducation = require('../../utils/education');
+const validateExperience = require('../../utils/experience');
 
 
 router.get('/', requireAuth, getProfile);
 router.get('/handle/:handle', getProfileHandle);
 router.get('/user/:userId', getProfileByUserId);
 router.get('/all', getAllProfiles);
-router.post('/', requireAuth, createOrUpdateProfile);
-router.post('/experience', requireAuth, addExperience);
-router.post('/education', requireAuth, addEducation);
+router.post('/', validateProfile, requireAuth, createOrUpdateProfile);
+router.post('/experience', validateExperience, requireAuth, addExperience);
+router.post('/education', validateEducation, requireAuth, addEducation);
 router.delete('/', requireAuth, deleteProfile);
 router.delete('/experience/:exp_id', requireAuth, deleteExperience);
 router.delete('/education/:edu_id', requireAuth, deleteEducation);

@@ -1,9 +1,8 @@
-import { ERROR_MESSAGE, AUTH_USER } from "../actions/types";
+import { AUTH_USER } from "../actions/types";
 
 const initialState = {
   isAuthenticated: false,
-  user: {},
-  errorMessage: ""
+  user: {}
 };
 
 export default (state = initialState, action) => {
@@ -12,14 +11,9 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: action.payload.isAuthenticated,
-        user: { ...action.payload.user },
-        errorMessage: ''
+        user: action.payload.user
       };
-    case ERROR_MESSAGE:
-      return {
-        ...state,
-        errorMessage: action.payload
-      };
+
     default:
       return state;
   }
