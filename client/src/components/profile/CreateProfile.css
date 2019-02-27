@@ -1,0 +1,33 @@
+.create-profile {
+  text-align: center;
+  padding-bottom: 25px;
+}
+.create-profile-form {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 20px 0;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+.create-profile-input {
+  width: 40%;
+  margin: 5px auto;
+  border: none;
+  border-bottom: 1px solid #757575;
+  outline: none;
+  width: 300px;
+  padding: 5px 0;
+  font-size: 0.9em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent;
+}
+.create-profile-input:focus {
+  border-bottom: 1px solid #2a9af2;
+  box-shadow: 0px 1px 0px 0px #2a9af2;
+}
+.profile-input-info {
+  color: #444;
+  font-size: 0.7em;
+}
