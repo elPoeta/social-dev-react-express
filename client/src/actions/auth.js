@@ -34,7 +34,7 @@ export const signUp = formData => async dispatch => {
     localStorage.setItem("token", token);
   } catch (error) {
     console.log("error", error);
-    dispatch({ type: ERROR_MESSAGE, payload: "Email is in use" });
+    // dispatch({ type: ERROR_MESSAGE, payload: "Email is in use" });
   }
 };
 

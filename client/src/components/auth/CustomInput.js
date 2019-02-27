@@ -11,6 +11,7 @@ class CustomInput extends Component {
         <input
           name={this.props.name}
           id={this.props.id}
+          className={this.props.classname}
           placeholder={this.props.placeholder}
           type={this.props.type}
           value={value}
