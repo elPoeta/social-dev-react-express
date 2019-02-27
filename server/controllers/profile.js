@@ -10,7 +10,7 @@ module.exports = {
                 .populate('user', ['name', 'avatar']);
             if (!profile) {
                 errors.noProfile = 'No profile for this user';
-                return res.status(404).json(errors);
+                return res.status(404).json({});
             }
             res.json(profile);
         } catch (error) {

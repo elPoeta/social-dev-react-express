@@ -2,15 +2,18 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import CustomInput from "./CustomInput";
+import CustomInput from "../common/CustomInput";
 import { login } from "../../actions/auth";
+import { clearErrorMessage } from "../../actions/errors";
+import '../common/CustomInput.css';
 
 class Login extends Component {
   componentDidMount() {
+    this.props.clearErrorMessage();
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
-    document.querySelector("body").style.backgroundColor = "#F1F1F1";
+
   }
   onSubmit = async formData => {
     await this.props.login(formData);
@@ -64,7 +67,7 @@ const mapStateToProps = state => ({
 export default compose(
   connect(
     mapStateToProps,
-    { login }
+    { login, clearErrorMessage }
   ),
   reduxForm({ form: "login" })
 )(Login);

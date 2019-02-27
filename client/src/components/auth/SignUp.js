@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import CustomInput from "./CustomInput";
+import CustomInput from "../common/CustomInput";
 import { signUp } from "../../actions/auth";
-import("./Auth.css");
+import { clearErrorMessage } from "../../actions/errors";
+import '../common/CustomInput.css';
 
 class SignUp extends Component {
   componentDidMount() {
-    document.querySelector("body").style.backgroundColor = "#F1F1F1";
+    this.props.clearErrorMessage();
   }
   onSubmit = async formData => {
     await this.props.signUp(formData);
@@ -83,7 +84,7 @@ const mapStateToProps = state => ({
 export default compose(
   connect(
     mapStateToProps,
-    { signUp }
+    { signUp, clearErrorMessage }
   ),
   reduxForm({ form: "signup" })
 )(SignUp);

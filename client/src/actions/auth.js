@@ -1,5 +1,4 @@
 import { AUTH_USER, ERROR_MESSAGE } from "./types";
-import isEmpty from "../utils/isEmpty";
 import jwtDecode from "jwt-decode";
 
 export const signUp = formData => async dispatch => {

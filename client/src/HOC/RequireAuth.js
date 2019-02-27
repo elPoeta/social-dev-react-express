@@ -13,7 +13,7 @@ export default ChildComponent => {
         }
 
         navigatePermission() {
-            if (!this.props.auth.isAuthenticated) {
+            if (!this.props.isAuthenticated) {
                 this.props.history.push('/');
             }
         }
