@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
         case CLEAR_PROFILE:
             return {
                 ...state,
-                profile: action.payload
+                profile: null
             };
         default: return state;
     }

@@ -25,3 +25,5 @@ export const getProfile = () => async dispatch => {
         dispatch({ type: GET_PROFILE, payload: {} });
     }
 }
+
+export const clearProfile = () => { return { type: CLEAR_PROFILE } };

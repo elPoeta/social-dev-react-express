@@ -10,7 +10,6 @@ import App from "./components/App";
 import Home from "./components/layout/Home";
 import SignUp from "./components/auth/SignUp";
 import Login from "./components/auth/Login";
-import Logout from "./components/auth/Logout";
 import Dashboard from "./components/profile/Dashboard";
 
 import rootReducers from "./reducers";
@@ -48,7 +47,6 @@ ReactDOM.render(
           <Route exact path="/" component={Home} />
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
-          <Route path="/logout" component={Logout} />
           <Route path="/dashboard" component={Dashboard} />
         </Switch>
       </App>

@@ -6,6 +6,7 @@ import CustomInput from "../common/CustomInput";
 import { signUp } from "../../actions/auth";
 import { clearErrorMessage } from "../../actions/errors";
 import '../common/CustomInput.css';
+import './Auth.css';
 
 class SignUp extends Component {
   componentDidMount() {
@@ -21,7 +22,7 @@ class SignUp extends Component {
     const { handleSubmit, errors } = this.props;
 
     return (
-      <div>
+      <div className='auth'>
         <h2>Sign Up</h2>
         <p>Create your Social-Dev account</p>
         <div className="form">

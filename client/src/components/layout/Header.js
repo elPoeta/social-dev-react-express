@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
+import { clearProfile } from "../../actions/profile";
 import "./Header.css";
 
 class Header extends Component {
   handleOnclick = () => {
+    this.props.clearProfile();
     this.props.logout();
   };
   render() {
@@ -51,5 +53,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { logout }
+  { logout, clearProfile }
 )(Header);

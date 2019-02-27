@@ -6,7 +6,7 @@ import CustomInput from "../common/CustomInput";
 import { login } from "../../actions/auth";
 import { clearErrorMessage } from "../../actions/errors";
 import '../common/CustomInput.css';
-
+import './Auth.css';
 class Login extends Component {
   componentDidMount() {
     this.props.clearErrorMessage();
@@ -24,7 +24,7 @@ class Login extends Component {
   render() {
     const { handleSubmit, errors } = this.props;
     return (
-      <div>
+      <div className="auth">
         <h2>Login</h2>
         <p>Connect to Social-dev's</p>
         <div className="form">

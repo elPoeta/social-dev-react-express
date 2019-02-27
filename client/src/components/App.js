@@ -5,7 +5,7 @@ import Footer from './layout/Footer';
 
 const App = props => (
   <div className="container">
-    <div className="App">
+    <div>
       <Header />
       {props.children}
     </div>
