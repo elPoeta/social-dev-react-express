@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export default ChildComponent => {
+export default PrivateRoute => {
     class ComposedComponent extends Component {
 
         componentDidMount() {
@@ -14,12 +14,12 @@ export default ChildComponent => {
 
         navigatePermission() {
             if (!this.props.isAuthenticated) {
-                this.props.history.push('/');
+                this.props.history.push('/login');
             }
         }
 
         render() {
-            return <ChildComponent {...this.props} />;
+            return <PrivateRoute {...this.props} />;
         }
     }
 

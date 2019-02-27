@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getProfile } from '../../actions/profile';
-import requireAuth from '../../HOC/RequireAuth'
+import PrivateRoute from '../../HOC/PrivateRoute'
 import { Spinner } from '../common/Spinner';
+import './Dashboard.css';
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -24,15 +25,18 @@ class Dashboard extends Component {
 
                 dashboardContent = (
                     <div>
-                        <p className="">Welcome {user.name}</p>
+                        <h3>Welcome <span>{user.name}</span></h3>
                         <p>You have not yet setup a profile, please add some info ;)</p>
-                        <Link to="/createprofile" className="">Create Profile</Link>
+                        <div>
+                            <Link to="/createprofile" className="btn-create-profile">Create Profile</Link>
+                        </div>
+
                     </div>
                 );
             }
         }
         return (
-            <div>
+            <div className='dashboard-container'>
                 <h2>Dashboard</h2>
                 {dashboardContent}
             </div>
@@ -45,4 +49,4 @@ const mapStateToProps = state => (
         profile: state.profile
     }
 );
-export default connect(mapStateToProps, { getProfile })(requireAuth(Dashboard));
+export default connect(mapStateToProps, { getProfile })(PrivateRoute(Dashboard));

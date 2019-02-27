@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { reduxForm, Field } from "redux-form";
+import { reduxForm } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import CustomInput from "../common/CustomInput";
 import { login } from "../../actions/auth";
 import { clearErrorMessage } from "../../actions/errors";
-import '../common/CustomInput.css';
+import LoginForm from './LoginForm';
+
 import './Auth.css';
 class Login extends Component {
   componentDidMount() {
@@ -26,36 +26,10 @@ class Login extends Component {
     return (
       <div className="auth">
         <h2>Login</h2>
-        <p>Connect to Social-dev's</p>
-        <div className="form">
-          <form onSubmit={handleSubmit(this.onSubmit)}>
-            <label>Email</label>
-            <Field
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="none"
-              placeholder="example@email.com"
-              classname={errors.email && "invalid-input"}
-              component={CustomInput}
-            />
-            {errors.email && <div className="invalid">{errors.email}</div>}
-            <label>Password</label>
-            <Field
-              id="password"
-              name="password"
-              type="password"
-              autoComplete="none"
-              placeholder="Password"
-              classname={errors.password && "invalid-input"}
-              component={CustomInput}
-            />
-            {errors.password && (
-              <div className="invalid">{errors.password}</div>
-            )}
-            <button className="btn btn-login">Login</button>
-          </form>
-        </div>
+        <p>Connect to Social-Dev's</p>
+        <LoginForm
+          handleSubmit={handleSubmit(this.onSubmit)}
+          errors={errors} />
       </div>
     );
   }

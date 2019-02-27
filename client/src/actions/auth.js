@@ -73,10 +73,10 @@ export const login = formData => async dispatch => {
   }
 };
 
-export const logout = () => dispatch => {
+export const logout = () => {
   localStorage.removeItem("token");
-  dispatch({
+  return {
     type: AUTH_USER,
     payload: {}
-  });
+  };
 };

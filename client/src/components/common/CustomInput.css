@@ -10,24 +10,24 @@
 
 label {
   display: block;
-  font-size: 24px;
+  font-size: .9em;
   font-weight: 100;
   text-transform: capitalize;
   color: #333333;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 input {
   display: block;
   width: 300px;
-  margin: 30px auto;
+  margin: 15px auto;
   border: none;
   border-bottom: 1px solid #757575;
   outline: none;
   width: 300px;
   padding: 5px 0;
-  font-size: 18px;
+  font-size: .9em;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   background-color: transparent;
 }
@@ -62,7 +62,8 @@ input:focus {
 
 .invalid {
   color: red;
-  padding-bottom: 10px;
+  font-size: .7em;
+  padding: 5px;
 }
 
 .invalid-input {

@@ -9,6 +9,7 @@ class Header extends Component {
   handleOnclick = () => {
     this.props.clearProfile();
     this.props.logout();
+    // this.props.history.push('/login');
   };
   render() {
     const { isAuthenticated, user } = this.props.auth;

@@ -1,0 +1,32 @@
+.dashboard-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 80%;
+    margin: 0 auto;
+}
+.dashboard-container h3{
+    font-weight: 100;
+}
+.dashboard-container span{
+    color: #444;
+    font-style: italic;
+}
+
+.dashboard-container h3, p, a{
+    margin-left: 20px;
+}
+.dashboard-container p{
+    padding: 10px;
+}
+.dashboard-container .btn-create-profile {
+    text-decoration: none;
+    padding: 20px;
+    background-color: rgb(51, 72, 129);
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+.dashboard-container .btn-create-profile:hover{
+    background-color: rgb(87, 113, 184);
+    color: #444;
+}

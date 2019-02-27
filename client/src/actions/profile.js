@@ -1,4 +1,4 @@
-import { GET_PROFILE, GET_PROFILES, CLEAR_PROFILE, LOADING } from '../actions/types';
+import { GET_PROFILE, CREATE_PROFILE, GET_PROFILES, CLEAR_PROFILE, LOADING } from '../actions/types';
 
 export const getProfile = () => async dispatch => {
     try {
@@ -25,5 +25,10 @@ export const getProfile = () => async dispatch => {
         dispatch({ type: GET_PROFILE, payload: {} });
     }
 }
+
+export const createProfile = formData => async dispatch => {
+
+};
+
 
 export const clearProfile = () => { return { type: CLEAR_PROFILE } };

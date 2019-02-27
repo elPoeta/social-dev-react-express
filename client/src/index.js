@@ -11,12 +11,14 @@ import Home from "./components/layout/Home";
 import SignUp from "./components/auth/SignUp";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/profile/Dashboard";
+import CreateProfile from "./components/profile/CreateProfile";
 
 import rootReducers from "./reducers";
 import isEmpty from "./utils/isEmpty";
 
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
+
 
 const middleware = [thunk];
 let user = {};
@@ -48,6 +50,7 @@ ReactDOM.render(
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/createprofile" component={CreateProfile} />
         </Switch>
       </App>
     </BrowserRouter>
