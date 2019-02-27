@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./CustomInput.css";
+
 class CustomInput extends Component {
   render() {
     const {

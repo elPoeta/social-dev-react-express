@@ -1,9 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import CustomInput from '../common/CustomInput';
-import '../common/CustomInput.css';
+import classnames from 'classnames';
+import './Auth.css';
 const LoginForm = props => {
-    const { handleSubmit, errors } = props
+    const { handleSubmit, errors } = props;
     return (
         <div className="form">
             <form onSubmit={handleSubmit}>
@@ -14,7 +15,7 @@ const LoginForm = props => {
                     type="email"
                     autoComplete="none"
                     placeholder="example@email.com"
-                    classname={errors.email && "invalid-input"}
+                    classname={classnames("input", errors.email && "invalid-input")}
                     component={CustomInput}
                 />
                 {errors.email && <div className="invalid">{errors.email}</div>}
@@ -25,7 +26,7 @@ const LoginForm = props => {
                     type="password"
                     autoComplete="none"
                     placeholder="Password"
-                    classname={errors.password && "invalid-input"}
+                    classname={classnames("input", errors.password && "invalid-input")}
                     component={CustomInput}
                 />
                 {errors.password && (
