@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+import jwtDecode from "jwt-decode";
 
 import App from "./components/App";
 import Home from "./components/layout/Home";
@@ -12,17 +13,24 @@ import Login from "./components/auth/Login";
 import Logout from "./components/auth/Logout";
 
 import rootReducers from "./reducers";
+import isEmpty from "./utils/isEmpty";
 
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
 const middleware = [thunk];
+let user = {};
+let isAuthenticated = false;
+if (localStorage.token) {
+  isAuthenticated = !isEmpty(localStorage.token);
+  user = jwtDecode(localStorage.getItem("token"));
+}
 const store = createStore(
   rootReducers,
   {
     auth: {
-      isAuthenticated: localStorage.getItem("token") ? true : false,
-      user: { jwt: localStorage.getItem("token") }
+      isAuthenticated,
+      user
     }
   },
   compose(

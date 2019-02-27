@@ -1,4 +1,5 @@
 import { AUTH_USER } from "../actions/types";
+import isEmpty from "../utils/isEmpty";
 
 const initialState = {
   isAuthenticated: false,
@@ -10,8 +11,8 @@ export default (state = initialState, action) => {
     case AUTH_USER:
       return {
         ...state,
-        isAuthenticated: action.payload.isAuthenticated,
-        user: action.payload.user
+        isAuthenticated: !isEmpty(action.payload),
+        user: action.payload
       };
 
     default:

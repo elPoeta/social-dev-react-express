@@ -20,12 +20,14 @@ h1 {
 }
 header ul {
   justify-self: flex-start;
+  justify-content: center;
+  align-content: center;
 }
 header nav {
   display: flex;
 }
 header ul li {
-  display: inline;
+  display: inline-block;
   list-style: none;
   padding: 10px;
 }
@@ -35,4 +37,11 @@ header nav {
 header a {
   text-decoration: none;
   color: #fff;
+  text-align: center;
+}
+
+header nav a img {
+  width: 25px;
+  border-radius: 50%;
+  margin-right: 5px;
 }

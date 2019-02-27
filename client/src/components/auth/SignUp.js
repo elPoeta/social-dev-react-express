@@ -12,9 +12,9 @@ class SignUp extends Component {
   onSubmit = async formData => {
     await this.props.signUp(formData);
     if (!this.props.errorMessage) {
-      this.props.history.push("/profiles");
+      this.props.history.push("/dashboard");
     }
-  }
+  };
   render() {
     const { handleSubmit, errors, user } = this.props;
 
@@ -66,12 +66,10 @@ class SignUp extends Component {
     );
   }
 }
-const mapStateToProps = state => (
-  {
-    auth: state.auth,
-    errors: state.errors
-  }
-);
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
 export default compose(
   connect(
     mapStateToProps,

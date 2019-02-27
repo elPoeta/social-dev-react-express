@@ -6,20 +6,18 @@ import CustomInput from "./CustomInput";
 import { login } from "../../actions/auth";
 
 class Login extends Component {
-
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/profiles');
+      this.props.history.push("/dashboard");
     }
     document.querySelector("body").style.backgroundColor = "#F1F1F1";
   }
   onSubmit = async formData => {
-
     await this.props.login(formData);
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/profiles");
+      this.props.history.push("/dashboard");
     }
-  }
+  };
   render() {
     const { handleSubmit, errors } = this.props;
     return (
@@ -53,12 +51,10 @@ class Login extends Component {
     );
   }
 }
-const mapStateToProps = state => (
-  {
-    auth: state.auth,
-    errors: state.errors
-  }
-);
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
 export default compose(
   connect(
     mapStateToProps,
