@@ -7,6 +7,7 @@ import CustomSelect from "../common/CustomSelect";
 
 import "./CreateProfile.css";
 import "../common/Errors.css";
+
 const CreateProfileForm = props => {
   const { handleSubmit, errors } = props;
   const options = [
@@ -29,7 +30,7 @@ const CreateProfileForm = props => {
           name="handle"
           type="text"
           autoComplete="none"
-          placeholder="*My handle profile"
+          placeholder="*Handle profile"
           classname={classnames(
             "create-profile-input",
             errors.handle && "invalid-input"
@@ -60,7 +61,7 @@ const CreateProfileForm = props => {
           name="company"
           type="text"
           autoComplete="none"
-          placeholder="My company"
+          placeholder="Company"
           classname={"create-profile-input"}
           component={CustomInput}
         />
@@ -72,7 +73,7 @@ const CreateProfileForm = props => {
           name="website"
           type="text"
           autoComplete="none"
-          placeholder="My Web Site"
+          placeholder="WebSite"
           classname={classnames(
             "create-profile-input",
             errors.website && "invalid-input"
@@ -88,7 +89,7 @@ const CreateProfileForm = props => {
           name="location"
           type="text"
           autoComplete="none"
-          placeholder="My location"
+          placeholder="Location"
           classname={"create-profile-input"}
           component={CustomInput}
         />
@@ -100,7 +101,7 @@ const CreateProfileForm = props => {
           name="skills"
           type="text"
           autoComplete="none"
-          placeholder="*Your skills eg: css3,html5,java"
+          placeholder="*Skills eg: css3,html5,java"
           classname={classnames(
             "create-profile-input",
             errors.skills && "invalid-input"
@@ -116,7 +117,7 @@ const CreateProfileForm = props => {
           name="githubuser"
           type="text"
           autoComplete="none"
-          placeholder="My github User"
+          placeholder="GitHub"
           classname={classnames(
             "create-profile-input",
             errors.githubuser && "invalid-input"
@@ -149,7 +150,7 @@ const CreateProfileForm = props => {
           type="text"
           icon="fab fa-linkedin icon"
           autoComplete="none"
-          placeholder="*My Linkedin url"
+          placeholder="Linkedin url"
           classname={classnames(
             "create-profile-input",
             errors.linkedin && "invalid-input"
@@ -164,7 +165,7 @@ const CreateProfileForm = props => {
           type="text"
           icon="fab fa-twitter icon"
           autoComplete="none"
-          placeholder="*My twitter url"
+          placeholder="Twitter url"
           classname={classnames(
             "create-profile-input",
             errors.twitter && "invalid-input"
@@ -178,7 +179,7 @@ const CreateProfileForm = props => {
           type="text"
           icon="fab fa-youtube icon"
           autoComplete="none"
-          placeholder="*My youtube url"
+          placeholder="Youtube url"
           classname={classnames(
             "create-profile-input",
             errors.youtube && "invalid-input"
@@ -192,7 +193,7 @@ const CreateProfileForm = props => {
           type="text"
           icon="fab fa-facebook icon"
           autoComplete="none"
-          placeholder="*My facebook url"
+          placeholder="Facebook url"
           classname={classnames(
             "create-profile-input",
             errors.facebook && "invalid-input"
@@ -209,5 +210,3 @@ const CreateProfileForm = props => {
 };
 
 export default CreateProfileForm;
-
-// <input class="input-field" type="text" placeholder="Username" name="usrnm">
