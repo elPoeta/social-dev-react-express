@@ -15,7 +15,7 @@
   padding-bottom: 40px;
 }
 .create-profile-input {
-  width: 40%;
+  width: 50%;
   margin: 5px auto;
   border: none;
   border-bottom: 1px solid #757575;
@@ -41,4 +41,14 @@
   color: #fff;
   background-color: #2a9af2;
   box-shadow: 0px 1px 0px 0px #2a9af2;
+}
+textarea {
+  padding: 12px 20px;
+}
+
+.icon {
+  padding: 10px;
+  color: #444;
+  min-width: 30px;
+  text-align: center;
 }

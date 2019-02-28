@@ -8,6 +8,7 @@ class CustomInput extends Component {
     return (
       <div>
         <label htmlFor={this.props.id}>{this.props.label}</label>
+        <i className={this.props.icon} />
         <input
           name={this.props.name}
           id={this.props.id}

@@ -19,6 +19,7 @@ class CreateProfile extends Component {
       this.props.history.push("/dashboard");
     }
   };
+
   render() {
     const { handleSubmit, errors } = this.props;
     return (

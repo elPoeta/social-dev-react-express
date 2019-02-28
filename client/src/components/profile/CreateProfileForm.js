@@ -23,12 +23,13 @@ const CreateProfileForm = props => {
   return (
     <div className="create-profile-form">
       <form onSubmit={handleSubmit}>
+        <span className="profile-input-info">* = required fields</span>
         <Field
           id="handle"
           name="handle"
           type="text"
           autoComplete="none"
-          placeholder="My handle profile"
+          placeholder="*My handle profile"
           classname={classnames(
             "create-profile-input",
             errors.handle && "invalid-input"
@@ -99,7 +100,7 @@ const CreateProfileForm = props => {
           name="skills"
           type="text"
           autoComplete="none"
-          placeholder="Your skills eg: css3,html5,java"
+          placeholder="*Your skills eg: css3,html5,java"
           classname={classnames(
             "create-profile-input",
             errors.skills && "invalid-input"
@@ -141,10 +142,72 @@ const CreateProfileForm = props => {
         <span className="profile-input-info">
           Tell us a little about yourself
         </span>
-        <button className="btn btn-signup">Submit</button>
+
+        <Field
+          id="linkedin"
+          name="linkedin"
+          type="text"
+          icon="fab fa-linkedin icon"
+          autoComplete="none"
+          placeholder="*My Linkedin url"
+          classname={classnames(
+            "create-profile-input",
+            errors.linkedin && "invalid-input"
+          )}
+          component={CustomInput}
+        />
+        {errors.linkedin && <div className="invalid">{errors.linkedin}</div>}
+
+        <Field
+          id="twitter"
+          name="twitter"
+          type="text"
+          icon="fab fa-twitter icon"
+          autoComplete="none"
+          placeholder="*My twitter url"
+          classname={classnames(
+            "create-profile-input",
+            errors.twitter && "invalid-input"
+          )}
+          component={CustomInput}
+        />
+        {errors.twitter && <div className="invalid">{errors.twitter}</div>}
+        <Field
+          id="youtube"
+          name="youtube"
+          type="text"
+          icon="fab fa-youtube icon"
+          autoComplete="none"
+          placeholder="*My youtube url"
+          classname={classnames(
+            "create-profile-input",
+            errors.youtube && "invalid-input"
+          )}
+          component={CustomInput}
+        />
+        {errors.youtube && <div className="invalid">{errors.youtube}</div>}
+        <Field
+          id="facebook"
+          name="facebook"
+          type="text"
+          icon="fab fa-facebook icon"
+          autoComplete="none"
+          placeholder="*My facebook url"
+          classname={classnames(
+            "create-profile-input",
+            errors.facebook && "invalid-input"
+          )}
+          component={CustomInput}
+        />
+        {errors.facebook && <div className="invalid">{errors.facebook}</div>}
+        <div className="btn-container">
+          <button className="btn btn-signup">Submit</button>
+        </div>
       </form>
     </div>
   );
 };
 
 export default CreateProfileForm;
+
+// <input class="input-field" type="text" placeholder="Username" name="usrnm">
