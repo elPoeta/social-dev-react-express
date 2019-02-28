@@ -13,6 +13,8 @@ import Login from "./components/auth/Login";
 import Dashboard from "./components/profile/Dashboard";
 import CreateProfile from "./components/profile/CreateProfile";
 import EditProfile from "./components/profile/EditProfile";
+import AddExperience from "./components/profile/AddExperience";
+import AddEducation from "./components/profile/AddEducation";
 
 import rootReducers from "./reducers";
 import isEmpty from "./utils/isEmpty";
@@ -53,6 +55,8 @@ ReactDOM.render(
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/createprofile" component={CreateProfile} />
           <Route path="/editprofile" component={EditProfile} />
+          <Route path="/addexperience" component={AddExperience} />
+          <Route path="/addeducation" component={AddEducation} />
         </Switch>
       </App>
     </BrowserRouter>

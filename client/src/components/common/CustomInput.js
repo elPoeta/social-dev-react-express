@@ -5,6 +5,7 @@ class CustomInput extends Component {
     const {
       input: { value, onChange }
     } = this.props;
+
     return (
       <div>
         <label htmlFor={this.props.id}>{this.props.label}</label>
@@ -17,6 +18,8 @@ class CustomInput extends Component {
           type={this.props.type}
           value={value}
           onChange={onChange}
+          disabled={this.props.disabled}
+
         />
       </div>
     );

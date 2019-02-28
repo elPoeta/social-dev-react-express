@@ -24,7 +24,7 @@ const CreateProfileForm = props => {
   return (
     <div className="create-profile-form">
       <form onSubmit={handleSubmit}>
-        <span className="profile-input-info">* = required fields</span>
+        <span className="profile-input-info">* required fields</span>
         <Field
           id="username"
           name="username"
