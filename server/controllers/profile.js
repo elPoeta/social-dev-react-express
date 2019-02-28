@@ -18,12 +18,12 @@ module.exports = {
         }
 
     },
-    getProfileHandle: async (req, res, next) => {
+    getProfileUsername: async (req, res, next) => {
         const errors = {};
-        const { handle } = req.params;
+        const { username } = req.params;
         try {
             const profile = await Profile
-                .findOne({ handle })
+                .findOne({ username })
                 .populate('user', ['name', 'avatar']);
             if (!profile) {
                 errors.noProfile = 'No profile for this user';
@@ -68,14 +68,14 @@ module.exports = {
     createOrUpdateProfile: async (req, res, next) => {
         const errors = {};
         const user = req.user.id
-        const { handle, company, website, location,
+        const { username, company, website, location,
             status, bio, githubuser, skills, linkedin,
             twitter, youtube, facebook } = req.body;
         const profileFields = {};
         profileFields.user = user;
         profileFields.social = {};
 
-        if (handle) profileFields.handle = handle;
+        if (username) profileFields.username = username;
         if (company) profileFields.company = company;
         if (website) profileFields.website = website;
         if (location) profileFields.location = location;
@@ -98,9 +98,9 @@ module.exports = {
                         { new: true });
                 res.json(updateProfile);
             } else {
-                const profile = await Profile.findOne({ handle });
+                const profile = await Profile.findOne({ username });
                 if (profile) {
-                    errors.handle = 'That handle already exists';
+                    errors.username = 'That handle already exists';
                     res.status(400).json(errors);
                 }
                 const newProfile = await new Profile(profileFields).save();

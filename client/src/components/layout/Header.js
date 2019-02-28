@@ -25,6 +25,7 @@ class Header extends Component {
     );
     const authLinks = (
       <ul>
+        <li><Link to='/dashboard'>Dashboard</Link></li>
         <li>
           <Link to="" onClick={this.handleOnclick}>
             <img src={user.avatar} alt={user.name} /> Logout{" "}

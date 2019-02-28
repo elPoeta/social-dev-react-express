@@ -26,22 +26,22 @@ const CreateProfileForm = props => {
       <form onSubmit={handleSubmit}>
         <span className="profile-input-info">* = required fields</span>
         <Field
-          id="handle"
-          name="handle"
+          id="username"
+          name="username"
           type="text"
           autoComplete="none"
-          placeholder="*Handle profile"
+          placeholder="*Profile username"
           classname={classnames(
             "create-profile-input",
-            errors.handle && "invalid-input"
+            errors.username && "invalid-input"
           )}
           component={CustomInput}
         />
         <span className="profile-input-info">
-          A unique handle for your profile URL. Your full name, company name,
+          A unique username for your profile URL. Your full name, company name,
           nickname
         </span>
-        {errors.handle && <div className="invalid">{errors.handle}</div>}
+        {errors.username && <div className="invalid">{errors.username}</div>}
         <Field
           id="status"
           name="status"

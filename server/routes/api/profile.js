@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getProfile, getProfileHandle, getProfileByUserId,
+const { getProfile, getProfileUsername, getProfileByUserId,
     getAllProfiles, createOrUpdateProfile, addExperience,
     addEducation, deleteProfile, deleteExperience, deleteEducation } = require('../../controllers/profile');
 const passport = require('passport');
@@ -12,7 +12,7 @@ const validateExperience = require('../../utils/experience');
 
 
 router.get('/', requireAuth, getProfile);
-router.get('/handle/:handle', getProfileHandle);
+router.get('/username/:username', getProfileUsername);
 router.get('/user/:userId', getProfileByUserId);
 router.get('/all', getAllProfiles);
 router.post('/', validateProfile, requireAuth, createOrUpdateProfile);

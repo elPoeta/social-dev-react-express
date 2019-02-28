@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getProfile } from "../../actions/profile";
 import PrivateRoute from "../../HOC/PrivateRoute";
 import { Spinner } from "../common/Spinner";
+import ProfileMenu from './ProfileMenu';
 import "./Dashboard.css";
 
 class Dashboard extends Component {
@@ -21,9 +22,10 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
           <div>
-            <h3>{user.name}</h3>
-            <img src={user.avatar} alt={user.name} />
-            <p>{profile.location}</p>
+            <h3>
+              Welcome <Link to={`/profile/${profile.username}`}><span>{user.name}</span></Link>
+            </h3>
+            <ProfileMenu />
           </div>
         );
       } else {

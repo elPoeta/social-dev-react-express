@@ -1,0 +1,16 @@
+.profile-menu ul li {
+    list-style: none;
+    display: inline;
+    padding: 10px;
+}
+.profile-menu ul li a{
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    background-color: #444;
+    border-radius: 8px;
+}
+
+.profile-menu ul li a i{
+    padding: 3px;
+}
