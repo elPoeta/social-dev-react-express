@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 class CustomInput extends Component {
+
   render() {
     const {
       input: { value, onChange }

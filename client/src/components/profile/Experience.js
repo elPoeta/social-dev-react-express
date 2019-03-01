@@ -10,13 +10,16 @@ class Experience extends Component {
     await this.props.deleteExperience(exp_id);
   };
   render() {
+    if (this.props.experience.length === 0) {
+      return null;
+    }
     const experience = this.props.experience.map(exp => (
       <li className="grid-credentials" key={exp._id}>
         <span>{exp.title}</span>
         <span>{exp.company}</span>
         <span>
           <Moment format="DD/MM/YYYY">{exp.from}</Moment> -{" "}
-          <Moment format="DD/MM/YYYY">{exp.to}</Moment>
+          {exp.current ? ' Now' : <Moment format="DD/MM/YYYY">{exp.to}</Moment>}
         </span>
         <span>
           <i

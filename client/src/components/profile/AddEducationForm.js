@@ -5,7 +5,7 @@ import CustomInput from "../common/CustomInput";
 import CustomTextArea from "../common/CustomTextArea";
 
 const AddEducationForm = props => {
-  const { handleSubmit, errors } = props;
+  const { handleSubmit, errors, current } = props;
   return (
     <div className="create-profile-form">
       <form onSubmit={handleSubmit}>
@@ -69,7 +69,7 @@ const AddEducationForm = props => {
         />
 
         {errors.from && <div className="invalid">{errors.from}</div>}
-        <h6>* To Date</h6>
+        <h6>To Date</h6>
         <Field
           id="to"
           name="to"
@@ -81,9 +81,18 @@ const AddEducationForm = props => {
             errors.to && "invalid-input"
           )}
           component={CustomInput}
+          disabled={current ? 'disabled' : ''}
         />
-
-        {errors.to && <div className="invalid">{errors.to}</div>}
+        <label htmlFor="current">Current</label>
+        <Field
+          id="current"
+          name="current"
+          type="checkbox"
+          autoComplete="none"
+          placeholder=""
+          classname=""
+          component={CustomInput}
+        />
 
         <Field
           id="description"

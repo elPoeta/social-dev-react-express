@@ -15,6 +15,10 @@ class EditProfile extends Component {
     }
     onSubmit = async formData => {
         this.props.clearErrorMessage();
+        formData.twitter = formData.social.twitter;
+        formData.linkedin = formData.social.linkedin;
+        formData.youtube = formData.social.youtube;
+        formData.facebook = formData.social.facebook;
         await this.props.createProfile(formData);
         if (isEmpty(this.props.errors)) {
             this.props.history.push("/dashboard");
@@ -23,6 +27,7 @@ class EditProfile extends Component {
 
     render() {
         const { handleSubmit, errors } = this.props;
+
         return (
             <div className="profile-container">
                 <Link className="btn-back" to="/dashboard">
@@ -34,6 +39,7 @@ class EditProfile extends Component {
                     <CreateProfileForm
                         handleSubmit={handleSubmit(this.onSubmit)}
                         errors={errors}
+
                     />
                 </div>
             </div>

@@ -10,6 +10,7 @@ import "../common/Errors.css";
 
 const CreateProfileForm = props => {
   const { handleSubmit, errors } = props;
+
   const options = [
     { label: "* Select Professional Status", value: 0 },
     { label: "Developer", value: "Developer" },
@@ -146,11 +147,11 @@ const CreateProfileForm = props => {
 
         <Field
           id="linkedin"
-          name="linkedin"
+          name="social.linkedin"
           type="text"
           icon="fab fa-linkedin icon"
           autoComplete="none"
-          placeholder="Linkedin url"
+          placeholder="Linkedin Profile URL"
           classname={classnames(
             "create-profile-input",
             errors.linkedin && "invalid-input"
@@ -161,11 +162,11 @@ const CreateProfileForm = props => {
 
         <Field
           id="twitter"
-          name="twitter"
+          name="social.twitter"
           type="text"
           icon="fab fa-twitter icon"
           autoComplete="none"
-          placeholder="Twitter url"
+          placeholder="Twitter Profile URL"
           classname={classnames(
             "create-profile-input",
             errors.twitter && "invalid-input"
@@ -175,11 +176,11 @@ const CreateProfileForm = props => {
         {errors.twitter && <div className="invalid">{errors.twitter}</div>}
         <Field
           id="youtube"
-          name="youtube"
+          name="social.youtube"
           type="text"
           icon="fab fa-youtube icon"
           autoComplete="none"
-          placeholder="Youtube url"
+          placeholder="YouTube Channel URL"
           classname={classnames(
             "create-profile-input",
             errors.youtube && "invalid-input"
@@ -189,11 +190,11 @@ const CreateProfileForm = props => {
         {errors.youtube && <div className="invalid">{errors.youtube}</div>}
         <Field
           id="facebook"
-          name="facebook"
+          name="social.facebook"
           type="text"
           icon="fab fa-facebook icon"
           autoComplete="none"
-          placeholder="Facebook url"
+          placeholder="Facebook Page URL"
           classname={classnames(
             "create-profile-input",
             errors.facebook && "invalid-input"

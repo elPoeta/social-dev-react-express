@@ -10,13 +10,16 @@ class Education extends Component {
     await this.props.deleteEducation(edu_id);
   };
   render() {
+    if (this.props.education.length === 0) {
+      return null;
+    }
     const education = this.props.education.map(edu => (
       <li className="grid-credentials" key={edu._id}>
         <span>{edu.school}</span>
         <span>{edu.degree}</span>
         <span>
           <Moment format="DD/MM/YYYY">{edu.from}</Moment> -{" "}
-          <Moment format="DD/MM/YYYY">{edu.to}</Moment>{" "}
+          {edu.current ? ' Now' : <Moment format="DD/MM/YYYY">{edu.to}</Moment>}{" "}
         </span>
         <span>
           <i
