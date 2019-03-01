@@ -1,7 +1,6 @@
 import {
   GET_PROFILE,
   GET_PROFILES,
-  CREATE_PROFILE,
   CLEAR_PROFILE,
   LOADING
 } from "../actions/types";
@@ -23,11 +22,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true
-      };
-    case CREATE_PROFILE:
-      return {
-        ...state,
-        profile: action.payload
       };
     case CLEAR_PROFILE:
       return {

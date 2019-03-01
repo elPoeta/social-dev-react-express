@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import { getProfile } from "../../actions/profile";
 import PrivateRoute from "../../HOC/PrivateRoute";
 import { Spinner } from "../common/Spinner";
-import ProfileMenu from './ProfileMenu';
+import ProfileMenu from "./ProfileMenu";
+import Experience from "./Experience";
+import Education from "./Education";
 import "./Dashboard.css";
 
 class Dashboard extends Component {
@@ -23,16 +25,21 @@ class Dashboard extends Component {
         dashboardContent = (
           <div>
             <h3>
-              Welcome <Link to={`/profile/${profile.username}`}><span>{user.name}</span></Link>
+              Welcome{" "}
+              <Link to={`/profile/${profile.username}`}>
+                <span className="dashboard-username">{user.name}</span>
+              </Link>
             </h3>
             <ProfileMenu />
+            <Experience experience={profile.experience} />
+            <Education education={profile.education} />
           </div>
         );
       } else {
         dashboardContent = (
           <div>
             <h3>
-              Welcome <span>{user.name}</span>
+              Welcome <span className="dashboard-username">{user.name}</span>
             </h3>
             <p>You have not yet setup a profile, please add some info ;)</p>
             <div>
