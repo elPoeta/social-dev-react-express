@@ -14,10 +14,6 @@ class CreateProfile extends Component {
   }
   onSubmit = async formData => {
     this.props.clearErrorMessage();
-    formData.twitter = formData.social.twitter;
-    formData.linkedin = formData.social.linkedin;
-    formData.youtube = formData.social.youtube;
-    formData.facebook = formData.social.facebook;
     await this.props.createProfile(formData);
     if (isEmpty(this.props.errors)) {
       this.props.history.push("/dashboard");

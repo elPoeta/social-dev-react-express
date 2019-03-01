@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProfile } from "../../actions/profile";
 import PrivateRoute from "../../HOC/PrivateRoute";
-import { Spinner } from "../common/Spinner";
+import Spinner from "../common/Spinner";
 import ProfileMenu from "./ProfileMenu";
 import Experience from "./Experience";
 import Education from "./Education";

@@ -38,26 +38,26 @@ module.exports = validateProfileInput = (req, res, next) => {
       errors.githubuser = "Not a valid URL";
     }
   }
-  if (!isEmpty(data.youtube)) {
-    if (!Validator.isURL(data.youtube)) {
+  if (!isEmpty(data.social.youtube)) {
+    if (!Validator.isURL(data.social.youtube)) {
       errors.youtube = "Not a valid URL";
     }
   }
 
-  if (!isEmpty(data.twitter)) {
-    if (!Validator.isURL(data.twitter)) {
+  if (!isEmpty(data.social.twitter)) {
+    if (!Validator.isURL(data.social.twitter)) {
       errors.twitter = "Not a valid URL";
     }
   }
 
-  if (!isEmpty(data.facebook)) {
-    if (!Validator.isURL(data.facebook)) {
+  if (!isEmpty(data.social.facebook)) {
+    if (!Validator.isURL(data.social.facebook)) {
       errors.facebook = "Not a valid URL";
     }
   }
 
-  if (!isEmpty(data.linkedin)) {
-    if (!Validator.isURL(data.linkedin)) {
+  if (!isEmpty(data.social.linkedin)) {
+    if (!Validator.isURL(data.social.linkedin)) {
       errors.linkedin = "Not a valid URL";
     }
   }

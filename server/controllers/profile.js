@@ -66,14 +66,14 @@ module.exports = {
         }
     },
     createOrUpdateProfile: async (req, res, next) => {
+
         const errors = {};
         const user = req.user.id
         const { username, company, website, location,
-            status, bio, githubuser, skills, linkedin,
-            twitter, youtube, facebook } = req.body;
+            status, bio, githubuser, skills, social } = req.body;
         const profileFields = {};
         profileFields.user = user;
-        profileFields.social = {};
+
 
         if (username) profileFields.username = username;
         if (company) profileFields.company = company;
@@ -83,10 +83,7 @@ module.exports = {
         if (bio) profileFields.bio = bio;
         if (githubuser) profileFields.githubuser = githubuser;
         if (typeof skills !== 'undefined') profileFields.skills = skills.split(',');
-        if (linkedin) profileFields.social.linkedin = linkedin;
-        if (twitter) profileFields.social.twitter = twitter;
-        if (youtube) profileFields.social.youtube = youtube;
-        if (facebook) profileFields.social.facebook = facebook;
+        if (social) profileFields.social = social;
 
         try {
             const profile = await Profile.findOne({ user });

@@ -15,6 +15,7 @@ import CreateProfile from "./components/profile/CreateProfile";
 import EditProfile from "./components/profile/EditProfile";
 import AddExperience from "./components/profile/AddExperience";
 import AddEducation from "./components/profile/AddEducation";
+import Profiles from "./components/profile/Profiles";
 
 import rootReducers from "./reducers";
 import isEmpty from "./utils/isEmpty";
@@ -57,6 +58,7 @@ ReactDOM.render(
           <Route path="/editprofile" component={EditProfile} />
           <Route path="/addexperience" component={AddExperience} />
           <Route path="/addeducation" component={AddEducation} />
+          <Route path="/profiles" component={Profiles} />
         </Switch>
       </App>
     </BrowserRouter>
