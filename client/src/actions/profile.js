@@ -52,6 +52,29 @@ export const getAllProfiles = () => async dispatch => {
     dispatch({ type: GET_PROFILE, payload: {} });
   }
 };
+export const getProfileUsername = username => async dispatch => {
+  try {
+    dispatch({ type: LOADING });
+    const response = await fetch(`http://localhost:5000/api/profile/username/${username}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token")
+      }
+    });
+    const data = await response;
+    if (data.status === 400 || data.status === 404 || data.status === 403) {
+      return dispatch({ type: GET_PROFILE, payload: null });
+    }
+
+    const profile = await data.json();
+    dispatch({ type: GET_PROFILE, payload: profile });
+  } catch (error) {
+    console.log("error", error);
+    dispatch({ type: GET_PROFILE, payload: null });
+  }
+};
 export const createProfile = formData => async dispatch => {
   try {
     const response = await fetch("http://localhost:5000/api/profile", {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import isEmpty from '../../utils/isEmpty';
-import './Profile.css';
+import './Profiles.css';
 
 class ProfilesItem extends Component {
     render() {
@@ -28,7 +28,7 @@ class ProfilesItem extends Component {
             </Link>
                 </div>
                 <div className="skills-profile-item">
-                    <h4>Skill Set</h4>
+                    <h4>Skills</h4>
                     <ul className="list-skills">
                         {profile.skills.slice(0, 4).map((skill, index) => (
                             <li key={index} className="">

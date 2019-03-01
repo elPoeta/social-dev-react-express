@@ -118,7 +118,7 @@ const CreateProfileForm = props => {
           name="githubuser"
           type="text"
           autoComplete="none"
-          placeholder="GitHub"
+          placeholder="GitHub username"
           classname={classnames(
             "create-profile-input",
             errors.githubuser && "invalid-input"

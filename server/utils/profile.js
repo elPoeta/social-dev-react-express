@@ -33,11 +33,7 @@ module.exports = validateProfileInput = (req, res, next) => {
       errors.website = "Not a valid URL";
     }
   }
-  if (!isEmpty(data.githubuser)) {
-    if (!Validator.isURL(data.githubuser)) {
-      errors.githubuser = "Not a valid URL";
-    }
-  }
+
   if (!isEmpty(data.social.youtube)) {
     if (!Validator.isURL(data.social.youtube)) {
       errors.youtube = "Not a valid URL";
