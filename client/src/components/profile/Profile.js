@@ -23,7 +23,6 @@ class Profile extends Component {
         } else {
             profileContent = (
                 <div>
-                    <Link to='/profiles'>Back To Profiles</Link>
                     <ProfileHeader profile={profile} />
                     <ProfileAbout profile={profile} />
                     <ProfileCredentials profile={profile} />
@@ -32,8 +31,11 @@ class Profile extends Component {
             );
         }
         return (
-            <div>
+            <div className='profile-container'>
+             <Link to='/profiles' className='btn-back black'>Back To Profiles</Link>
+            <div className="profile">
                 {profileContent}
+            </div>
             </div>
         )
     }
