@@ -26,7 +26,7 @@ class Profiles extends Component {
         }
 
         return (
-            <div>
+            <div className='profiles'>
                 <h2>Developer Profiles</h2>
                 <p>Start to connect with developers</p>
                 {profilesItems}
