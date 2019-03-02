@@ -6,7 +6,7 @@ class ProfileHeader extends Component {
     const { profile } = this.props;
 
     return (
-      <div className="profile-header">
+      <div ref="myHeaderRef" className="profile-header">
         <figure>
           <img src={profile.user.avatar} alt={profile.user.name} />
         </figure>
