@@ -8,12 +8,14 @@
 .profile-header {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: 210px 100px 60px 50px 100px;
   text-align: center;
   justify-items: center;
   background-color: #2a9af2;
   box-shadow: 0px 1px 0px 0px #2a9af2;
   color: #fff;
   border-radius: 15px;
+  margin: 5px;
 }
 .profile-header h2 {
   font-size: 2.5em;
@@ -26,7 +28,9 @@
   background-color: #444;
   box-shadow: 0px 1px 0px 0px #444;
 }
-
+.skill-about-icon{
+  color:#2a9af2;
+}
 .i-color-wh {
   color: #fff;
 }
@@ -66,3 +70,48 @@
   display: inline;
   padding: 10px;
 }
+
+.profile-credentials{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  
+}
+.profile-credentials h3{
+  color:#2a9af2;
+  font-weight: 700;
+}
+.container-credentials{
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 25px;
+  border: 2px solid #ccc;
+  color: #444;
+  border-radius: 5px;
+  min-height: 50px;
+  padding: 5px;
+}
+.credentials h2{
+  margin-left: 5px;
+  font-weight: 700;
+}
+.credentials span{
+  margin-left: 6px;
+}
+.credentials-bold{
+  font-weight: 700;
+}
+.divisor-credentials {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 102, 204, 0),
+    rgba(0, 102, 204, 0.75),
+    rgba(0, 102, 204, 0)
+  );
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+

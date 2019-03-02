@@ -7,7 +7,7 @@ class ProfileAbout extends Component {
 
     const skills = profile.skills.map((skill, index) => (
       <li key={index}>
-        <i className="fa fa-check" /> {skill}
+        <i className="fa fa-check skill-about-icon" /> {skill}
       </li>
     ));
     return (
@@ -18,15 +18,15 @@ class ProfileAbout extends Component {
             {isEmpty(profile.bio) ? (
               <span>{firstName} does not have a bio</span>
             ) : (
-              <span>{profile.bio}</span>
-            )}
+                <span>{profile.bio}</span>
+              )}
           </p>
         </div>
         <div>
           <hr className="divisor" />
         </div>
         <div className="">
-          <h2>Skill Set</h2>
+          <h2>My Skills</h2>
           <ul>{skills}</ul>
         </div>
       </div>

@@ -32,10 +32,10 @@ class Profile extends Component {
         }
         return (
             <div className='profile-container'>
-             <Link to='/profiles' className='btn-back black'>Back To Profiles</Link>
-            <div className="profile">
-                {profileContent}
-            </div>
+                <Link to='/profiles' className='btn-back black'>Back To Profiles</Link>
+                <div className="profile">
+                    {profileContent}
+                </div>
             </div>
         )
     }
