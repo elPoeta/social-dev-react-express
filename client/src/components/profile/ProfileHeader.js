@@ -6,7 +6,7 @@ class ProfileHeader extends Component {
     const { profile } = this.props;
 
     return (
-      <div ref="myHeaderRef" className="profile-header">
+      <div className="profile-header">
         <figure>
           <img src={profile.user.avatar} alt={profile.user.name} />
         </figure>
@@ -21,31 +21,56 @@ class ProfileHeader extends Component {
         <div>
           <p>
             {isEmpty(profile.website) ? null : (
-              <a className="" href={profile.website} target="_blank">
+              <a
+                className=""
+                href={profile.website}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fas fa-globe fa-2x i-color-wh" />
               </a>
             )}
 
             {isEmpty(profile.social && profile.social.twitter) ? null : (
-              <a className="" href={profile.social.twitter} target="_blank">
+              <a
+                className=""
+                href={profile.social.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fab fa-twitter fa-2x i-color-wh" />
               </a>
             )}
 
             {isEmpty(profile.social && profile.social.facebook) ? null : (
-              <a className="" href={profile.social.facebook} target="_blank">
+              <a
+                className=""
+                href={profile.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fab fa-facebook fa-2x i-color-wh" />
               </a>
             )}
 
             {isEmpty(profile.social && profile.social.linkedin) ? null : (
-              <a className="" href={profile.social.linkedin} target="_blank">
+              <a
+                className=""
+                href={profile.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fab fa-linkedin fa-2x i-color-wh" />
               </a>
             )}
 
             {isEmpty(profile.social && profile.social.youtube) ? null : (
-              <a className="" href={profile.social.youtube} target="_blank">
+              <a
+                className=""
+                href={profile.social.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fab fa-youtube fa-2x i-color-wh" />
               </a>
             )}
