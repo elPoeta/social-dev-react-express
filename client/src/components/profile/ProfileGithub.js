@@ -14,9 +14,9 @@ class ProfileGithub extends Component {
     try {
       const repoResponse = await fetch(
         `https://api.github.com/users/${this.props.githubuser}/repos?per_page=${
-          this.state.limit
+        this.state.limit
         }&sort=${this.state.sort}&${this.state.clientId}&client_secret=${
-          this.state.clientSecret
+        this.state.clientSecret
         }`
       );
       const repos = await repoResponse.json();
@@ -37,36 +37,35 @@ class ProfileGithub extends Component {
       repos.length === 0 ? (
         <div>No repos for this profile</div>
       ) : (
-        repos.map(repo => (
-          <div key={repo.id} className="githubuser-items">
-            <div className="git-desc">
-              <h4>
-                <a
-                  href={repo.html_url}
-                  className="text-info"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {repo.name}
-                </a>
-              </h4>
-              <p>{repo.description}</p>
-            </div>
+          repos.map(repo => (
+            <div key={repo.id} className="githubuser-items">
+              <div className="git-desc">
+                <h4>
+                  <a
+                    href={repo.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {repo.name}
+                  </a>
+                </h4>
+                <p>{repo.description}</p>
+              </div>
 
-            <div className="git-stars">
-              <span className="badge badge-blue">
-                Stars: {repo.stargazers_count}
-              </span>
-              <span className="badge badge-gray">
-                Watchers: {repo.watchers_count}
-              </span>
-              <span className="badge badge-green">
-                Forks: {repo.forks_count}
-              </span>
+              <div className="git-stars">
+                <span className="badge badge-blue">
+                  Stars: {repo.stargazers_count}
+                </span>
+                <span className="badge badge-gray">
+                  Watchers: {repo.watchers_count}
+                </span>
+                <span className="badge badge-green">
+                  Forks: {repo.forks_count}
+                </span>
+              </div>
             </div>
-          </div>
-        ))
-      );
+          ))
+        );
     return (
       <div ref="myRef" className="githubuser-container">
         <hr className="divisor" />

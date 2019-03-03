@@ -4,9 +4,10 @@ const Profile = require('../models/Profile');
 module.exports = {
     createPost: async (req, res, next) => {
         const user = req.user.id;
-        const { text, name, avatar } = req.body;
+        const { title, body, name, avatar } = req.body;
         const newPost = new Posts({
-            text,
+            title,
+            body,
             name,
             avatar,
             user
@@ -97,14 +98,14 @@ module.exports = {
         }
     },
     createComment: async (req, res, next) => {
-        const { text, name, avatar } = req.body;
+        const { body, name, avatar } = req.body;
         const user = req.user.id;
         try {
             const post = await Posts.findById({ _id: req.params.id });
             if (!post) {
                 return res.json({ postNotFound: 'Post not found' });
             }
-            const newComment = { text, name, avatar, user };
+            const newComment = { body, name, avatar, user };
             post.comments = [...post.comments, newComment];
             await post.save();
             res.json(post);

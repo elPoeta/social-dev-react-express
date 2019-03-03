@@ -17,6 +17,9 @@ import AddExperience from "./components/profile/AddExperience";
 import AddEducation from "./components/profile/AddEducation";
 import Profiles from "./components/profile/Profiles";
 import Profile from "./components/profile/Profile";
+import CreatePost from "./components/posts/CreatePost";
+
+
 
 import rootReducers from "./reducers";
 import isEmpty from "./utils/isEmpty";
@@ -61,6 +64,7 @@ ReactDOM.render(
           <Route path="/addeducation" component={AddEducation} />
           <Route path="/profiles" component={Profiles} />
           <Route path="/profile/:username" component={Profile} />
+          <Route path="/post/createpost" component={CreatePost} />
         </Switch>
       </App>
     </BrowserRouter>

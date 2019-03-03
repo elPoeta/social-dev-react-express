@@ -1,0 +1,37 @@
+.create-post {
+    margin: 1rem 4rem;
+  }
+  
+  .create-post .ql-container {
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    background: #fefcfc;
+  }
+ 
+  .create-post .ql-snow.ql-toolbar {
+    display: block;
+    background: #eaecec;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+  }
+  
+  /*
+  .app .ql-bubble .ql-editor {
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+  }
+  */
+  .create-post .ql-editor {
+    min-height: 30em;
+  }
+  
+.btn-create{
+  color:#fff;
+  background-color: #444;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100px;
+  font-size: 1.1em;
+  font-weight: 400;
+}
