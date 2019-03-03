@@ -18,6 +18,7 @@ import AddEducation from "./components/profile/AddEducation";
 import Profiles from "./components/profile/Profiles";
 import Profile from "./components/profile/Profile";
 import CreatePost from "./components/posts/CreatePost";
+import PostFeed from "./components/posts/PostFeed";
 
 
 
@@ -65,6 +66,7 @@ ReactDOM.render(
           <Route path="/profiles" component={Profiles} />
           <Route path="/profile/:username" component={Profile} />
           <Route path="/post/createpost" component={CreatePost} />
+          <Route path="/feed" component={PostFeed} />
         </Switch>
       </App>
     </BrowserRouter>

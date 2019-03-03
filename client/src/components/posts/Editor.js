@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
-import ReactQuill from 'react-quill';
+import ReactQuill, { Quill } from 'react-quill'
+//import { ImageDrop } from 'quill-image-drop-module'
+import ImageResize from 'quill-image-resize-module-react';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions/post';
+import { clearErrorMessage } from "../../actions/errors";
 import PrivateRoute from '../../HOC/PrivateRoute';
+
+
 class Editor extends Component {
 
     state = {
         body: null,
-        title: ''
+        title: '',
+        name: '',
+        avatar: ''
+    }
+    componentDidMount() {
+        this.props.clearErrorMessage();
     }
     handleBodyChange = body => {
         this.setState({ body });
@@ -18,18 +28,28 @@ class Editor extends Component {
     }
 
     handleOnClick = async isCreate => {
+        console.log('submit')
+
         if (isCreate) {
-            console.log(this.state.title);
-            console.log(this.state.body);
+            const postData = {
+                title: this.state.title,
+                body: this.state.body,
+                name: this.props.auth.user.name,
+                avatar: this.props.auth.user.avatar
+            }
+            this.props.clearErrorMessage();
+            await this.props.createPost(postData);
 
         } else {
             console.log('coment');
 
         }
+
     }
     render() {
         const { body, title } = this.state;
         const { theme, placeholder, isCreate, btnTitle, errors } = this.props;
+
         return (
             <div className="editor-container">
                 {isCreate ? <div><span className='create-post-title'>Title: </span>
@@ -51,11 +71,14 @@ class Editor extends Component {
                     placeholder={placeholder}
                 />
                 {errors.body && <div className="invalid">{errors.body}</div>}
-                <button className='btn-create' onClick={() => this.handleOnClick(isCreate)}>{btnTitle}</button>
+                <button className='btn-create' onClick={() => { this.handleOnClick(isCreate) }}>{btnTitle}</button>
             </div>
         )
     }
 }
+
+Quill.register('modules/imageResize', ImageResize);
+
 Editor.modules = {
     toolbar: [
         [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
@@ -64,22 +87,33 @@ Editor.modules = {
         [{ 'list': 'ordered' }, { 'list': 'bullet' },
         { 'indent': '-1' }, { 'indent': '+1' }],
         ['link', 'image', 'video'],
+        [{ 'color': [] }, { 'background': [] }],
         ['clean']
     ],
     clipboard: {
         matchVisual: false,
+    },
+    imageResize: {
+        displayStyles: {
+            backgroundColor: 'black',
+            border: 'none',
+            color: 'white'
+        },
+        modules: ['Resize', 'DisplaySize', 'Toolbar']
     }
 }
+
 
 Editor.formats = [
     'header', 'font', 'size',
     'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet', 'indent',
-    'link', 'image', 'video'
+    'link', 'image', 'video', 'color',
 ]
 
 const mapStateToProps = state => ({
+    auth: state.auth,
     errors: state.errors
 })
 
-export default connect(mapStateToProps, { createPost })(PrivateRoute(Editor));
+export default connect(mapStateToProps, { createPost, clearErrorMessage })(PrivateRoute(Editor));

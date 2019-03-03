@@ -2,13 +2,13 @@ import {
   GET_PROFILE,
   GET_ALL_PROFILES,
   CLEAR_PROFILE,
-  LOADING,
+  PROFILE_LOADING,
   ERROR_MESSAGE
 } from "../actions/types";
 
 export const getProfile = () => async dispatch => {
   try {
-    dispatch({ type: LOADING });
+    dispatch({ type: PROFILE_LOADING });
     const response = await fetch("http://localhost:5000/api/profile", {
       method: "GET",
       headers: {
@@ -31,7 +31,7 @@ export const getProfile = () => async dispatch => {
 };
 export const getAllProfiles = () => async dispatch => {
   try {
-    dispatch({ type: LOADING });
+    dispatch({ type: PROFILE_LOADING });
     const response = await fetch("http://localhost:5000/api/profile/all", {
       method: "GET",
       headers: {
@@ -54,7 +54,7 @@ export const getAllProfiles = () => async dispatch => {
 };
 export const getProfileUsername = username => async dispatch => {
   try {
-    dispatch({ type: LOADING });
+    dispatch({ type: PROFILE_LOADING });
     const response = await fetch(
       `http://localhost:5000/api/profile/username/${username}`,
       {

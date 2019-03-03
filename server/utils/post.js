@@ -6,7 +6,7 @@ module.exports = validatePostInput = (req, res, next) => {
     const data = req.body;
 
 
-    data.title = !isEmpty(data.tirle) ? data.title : "";
+    data.title = !isEmpty(data.title) ? data.title : "";
     data.body = !isEmpty(data.body) ? data.body : "";
 
     if (!Validator.isLength(data.title, { min: 10, max: 50 })) {
