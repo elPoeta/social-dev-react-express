@@ -1,4 +1,4 @@
-import { ADD_POST } from "../actions/types";
+import { CREATE_POST } from "../actions/types";
 
 const initialState = {
   posts: [],
@@ -8,7 +8,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case CREATE_POST:
       return {
         ...state,
         posts: [...state.posts, action.payload]

@@ -1,6 +1,6 @@
-import { ADD_POST, ERROR_MESSAGE } from "./types";
+import { CREATE_POST, ERROR_MESSAGE } from "./types";
 
-export const addPost = postData => dispatch => {
+export const createPost = postData => async dispatch => {
     try {
         const response = await fetch("http://localhost:5000/api/post", {
             method: "POST",
@@ -17,7 +17,7 @@ export const addPost = postData => dispatch => {
             return dispatch({ type: ERROR_MESSAGE, payload: error });
         }
         const post = await data.json();
-        dispatch({type: ADD_POST, payload: post});
+        dispatch({ type: CREATE_POST, payload: post });
     } catch (error) {
         console.log(error);
     }
