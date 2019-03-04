@@ -49,14 +49,3 @@
   margin: 15px;
   justify-self: end;
 }
-.post {
-  border: 1px solid #ccc;
-  border-radius: 0.5em;
-  background-color: #fff;
-}
-.post .ql-container {
-  border: none;
-}
-.post .ql-snow.ql-toolbar {
-  display: none;
-}

@@ -1,0 +1,27 @@
+.post-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  width: 80%;
+}
+.post-container h2 {
+  text-align: center;
+  color: #2a9af2;
+  font-size: 2em;
+  font-weight: 900;
+}
+.post {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  background-color: #fff;
+}
+.post .ql-container {
+  border: none;
+}
+.post .ql-snow.ql-toolbar {
+  display: none;
+}

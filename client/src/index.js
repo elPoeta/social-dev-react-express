@@ -19,15 +19,13 @@ import Profiles from "./components/profile/Profiles";
 import Profile from "./components/profile/Profile";
 import CreatePost from "./components/posts/CreatePost";
 import PostFeed from "./components/posts/PostFeed";
-
-
+import Post from "./components/posts/Post";
 
 import rootReducers from "./reducers";
 import isEmpty from "./utils/isEmpty";
 
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
-
 
 const middleware = [thunk];
 let user = {};
@@ -67,6 +65,7 @@ ReactDOM.render(
           <Route path="/profile/:username" component={Profile} />
           <Route path="/post/createpost" component={CreatePost} />
           <Route path="/feed" component={PostFeed} />
+          <Route path="/post/:id" component={Post} />
         </Switch>
       </App>
     </BrowserRouter>
