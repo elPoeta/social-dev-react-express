@@ -1,45 +1,43 @@
 .create-post {
-    margin: 1rem 4rem;
-   
-  }
-  .editor-container{
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  .create-post .ql-container {
-    border-bottom-left-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
-    background: #fefcfc;
-    font-size: 1em;
-  }
- 
-  .create-post .ql-snow.ql-toolbar {
-    display: block;
-    background: #eaecec;
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
-  }
-  
-  
-  .create-post .ql-bubble .ql-editor {
-    border: 1px solid #ccc;
-    border-radius: 0.5em;
-  }
-  
-  .create-post .ql-editor {
-    min-height: 25em;
-  }
-  .create-post-input{
-    padding: 10px;
-    width: 80%;
-    margin: 15px;
-    border-radius: 0.5em;
-  }
-  .create-post-title{
-    font-weight: 700;
-  }
-.btn-create{
-  color:#fff;
+  margin: 1rem 4rem;
+}
+.editor-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.create-post .ql-container {
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  background: #fefcfc;
+  font-size: 1em;
+}
+
+.create-post .ql-snow.ql-toolbar {
+  display: block;
+  background: #eaecec;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
+
+.create-post .ql-bubble .ql-editor {
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+}
+
+.create-post .ql-editor {
+  min-height: 25em;
+}
+.create-post-input {
+  padding: 10px;
+  width: 80%;
+  margin: 15px;
+  border-radius: 0.5em;
+}
+.create-post-title {
+  font-weight: 700;
+}
+.btn-create {
+  color: #fff;
   background-color: #444;
   border: none;
   padding: 10px;
@@ -51,7 +49,14 @@
   margin: 15px;
   justify-self: end;
 }
-
-.post-item .ql-snow.ql-toolbar {
+.post {
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  background-color: #fff;
+}
+.post .ql-container {
+  border: none;
+}
+.post .ql-snow.ql-toolbar {
   display: none;
 }
