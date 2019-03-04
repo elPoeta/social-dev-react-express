@@ -1,6 +1,6 @@
 const Posts = require('../models/Posts');
 const Profile = require('../models/Profile');
-
+const ObjectId = require('mongoose').Types.ObjectId;
 module.exports = {
     createPost: async (req, res, next) => {
         const user = req.user.id;
@@ -32,22 +32,37 @@ module.exports = {
         try {
             const post = await Posts.findById({ _id: req.params.id });
             if (!post) {
-                return res.json({ post: 'Post not found' });
+                return res.json({ post: {} });
             }
             res.json(post);
         } catch (error) {
-            res.json({ postNotFound: 'Post not found' });
+            res.json({ post: {} });
+
+        }
+    },
+    getPostByUserId: async (req, res, next) => {
+        try {
+            const posts = await Posts.find({ user: new ObjectId(req.params.user_id) })
+
+            if (!posts) {
+                return res.json({ posts: [] });
+            }
+            res.json(posts);
+        } catch (error) {
+            res.json({ posts: [] });
 
         }
     },
     deletePost: async (req, res, next) => {
         try {
+
             const profile = await Profile.findOne({ user: req.user.id });
             if (!profile) {
                 return res.json('Post not found');
             }
             const post = await Posts.findById({ _id: req.params.id });
-            if (post.user.toString() !== req.params.id) {
+
+            if (post._id.toString() !== req.params.id) {
                 return res.status(401).json({ noAuthorized: 'User no authorized' });
             }
             await post.remove();

@@ -10,17 +10,21 @@
   margin-top: 40px;
   padding-bottom: 40px;
   border-radius: 0.5em;
-  height: 120px;
+  height: 130px;
   justify-items: center;
 }
 .post-item h4 {
   text-align: center;
   color: #444;
   font-weight: 900;
+  margin-left: 5px;
+ 
+
 }
 .post-item img {
   border-radius: 50%;
   width: 80px;
+  margin-left: 5px;
 }
 .post-item-description {
   display: grid;
@@ -30,6 +34,7 @@
   margin-top: 5px;
   text-align: center;
   align-self: center;
+
 }
 .post-item li {
   list-style: none;

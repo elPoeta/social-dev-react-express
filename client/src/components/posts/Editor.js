@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, withRouter } from 'react-router-dom';
 import ReactQuill, { Quill } from "react-quill";
 import ImageResize from "quill-image-resize-module-react";
 import { connect } from "react-redux";
@@ -14,6 +15,7 @@ class Editor extends Component {
     avatar: ""
   };
   componentDidMount() {
+    console.log(this.props);
     this.props.clearErrorMessage();
   }
   handleBodyChange = body => {
@@ -25,8 +27,6 @@ class Editor extends Component {
   };
 
   handleOnClick = async isCreate => {
-    console.log("submit");
-
     if (isCreate) {
       const postData = {
         title: this.state.title,
@@ -35,7 +35,7 @@ class Editor extends Component {
         avatar: this.props.auth.user.avatar
       };
       this.props.clearErrorMessage();
-      await this.props.createPost(postData);
+      await this.props.createPost(postData, this.props.history);
     } else {
       console.log("coment");
     }
@@ -69,14 +69,19 @@ class Editor extends Component {
           placeholder={placeholder}
         />
         {errors.body && <div className="invalid">{errors.body}</div>}
-        <button
-          className="btn-create"
-          onClick={() => {
-            this.handleOnClick(isCreate);
-          }}
-        >
-          {btnTitle}
-        </button>
+        <div>
+          <Link to="/dashboard" className="btn-back black">
+            Back To Dashboard
+        </Link>
+          <button
+            className="btn-create"
+            onClick={() => {
+              this.handleOnClick(isCreate);
+            }}
+          >
+            {btnTitle}
+          </button>
+        </div>
       </div>
     );
   }
@@ -152,7 +157,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { createPost, clearErrorMessage }
-)(PrivateRoute(Editor));
+)(PrivateRoute(withRouter(Editor)));
 
 /**
  *   toolbar: [

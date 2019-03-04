@@ -20,6 +20,7 @@ import Profile from "./components/profile/Profile";
 import CreatePost from "./components/posts/CreatePost";
 import PostFeed from "./components/posts/PostFeed";
 import Post from "./components/posts/Post";
+import MyPosts from "./components/profile/MyPosts";
 
 import rootReducers from "./reducers";
 import isEmpty from "./utils/isEmpty";
@@ -61,6 +62,7 @@ ReactDOM.render(
           <Route path="/editprofile" component={EditProfile} />
           <Route path="/addexperience" component={AddExperience} />
           <Route path="/addeducation" component={AddEducation} />
+          <Route path="/myposts" component={MyPosts} />
           <Route path="/profiles" component={Profiles} />
           <Route path="/profile/:username" component={Profile} />
           <Route path="/post/createpost" component={CreatePost} />

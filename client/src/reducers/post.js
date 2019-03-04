@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_POST, POST_LOADING } from "../actions/types";
+import { GET_POSTS, GET_POST, DELETE_POST, POST_LOADING } from "../actions/types";
 
 const initialState = {
   posts: [],
@@ -18,6 +18,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         post: action.payload,
+        loading: false
+      };
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: [...state.posts.filter(post => post._id !== action.payload)],
         loading: false
       };
     case POST_LOADING:

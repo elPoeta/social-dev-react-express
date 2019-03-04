@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { createPost, getPosts, getPostById,
-    deletePost, likePost, unLikePost,
-    createComment, deleteComment } = require('../../controllers/posts');
+    getPostByUserId, deletePost, likePost,
+    unLikePost, createComment, deleteComment } = require('../../controllers/posts');
 const passport = require('passport');
 require('../../services/passport');
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -13,6 +13,7 @@ const validateComment = require('../../utils/comment');
 router.post('/', validatePost, requireAuth, createPost);
 router.get('/', getPosts);
 router.get('/:id', getPostById);
+router.get('/user/:user_id', requireAuth, getPostByUserId);
 router.delete('/:id', requireAuth, deletePost);
 router.post('/like/:id', requireAuth, likePost);
 router.post('/unlike/:id', requireAuth, unLikePost);
