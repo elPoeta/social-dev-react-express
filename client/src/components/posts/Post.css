@@ -26,33 +26,33 @@
   display: none;
 }
 
-.renderpost-container{
+.renderpost-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap:25px;
+  grid-gap: 25px;
 }
-.renderpost-container div:first-child{
+.renderpost-container div:first-child {
   margin: 25px;
 }
-.renderpost-listmenu{
+.renderpost-listmenu {
   text-align: center;
 }
-.renderpost-listmenu ul li{
+.renderpost-listmenu ul li {
   display: inline;
   list-style: none;
   padding: 15px;
 }
 .renderpost-listmenu i {
   padding: 5px;
- cursor: pointer;
+  cursor: pointer;
 }
 
-.renderpost-listmenu ul li:nth-child(1){
+.i-renderlist-like {
   color: #2a9af2;
 }
-.renderpost-listmenu ul li:nth-child(2){
+.i-renderlist-unlike {
   color: #692713;
 }
-.renderpost-listmenu ul li:nth-child(3){
+.i-renderlist-comment {
   color: #444;
 }

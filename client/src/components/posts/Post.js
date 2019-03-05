@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import RenderPost from "./RenderPost";
 import { getPost, likePost, removeLikePost } from "../../actions/post";
@@ -12,52 +12,64 @@ class Post extends Component {
     }
   }
   handleLikeOnClick = async () => {
-    console.log(this.props.post.post._id);
-    // await this.props.likePost(this.state.id);
-  }
+    await this.props.likePost(this.props.post.post._id);
+  };
   handleRemoveLikeOnClick = async () => {
-    console.log(this.props.post.post._id);
-    // await this.props.removeLikePost(this.state.id);
-  }
+    await this.props.removeLikePost(this.props.post.post._id);
+  };
   findUserLike = likes => {
-    const { auth } = this.props.auth;
-    console.log('user >', auth)
-    return likes.filter(like => like.user === auth.user.id);
-  }
+    const { user } = this.props.auth;
+    return likes.filter(like => like.user === user.id).length > 0;
+  };
   render() {
     const { post, loading } = this.props.post;
+
     let postContent;
-    console.log(post)
-    if (post === null || loading) {
+    if (post === null || loading || Object.keys(post).length === 0) {
       postContent = <Spinner />;
-    } else {
+    } else if (Object.keys(post).length > 0) {
       postContent = (
         <div className="post-container">
           <h2>{post.title}</h2>
           <RenderPost body={post.body} id={post._id} />
           <div>
-            <hr className='divisor' />
+            <hr className="divisor" />
             <div className="renderpost-listmenu">
               <ul>
-
-                <li><i className="far fa-thumbs-up fa-2x" onClick={this.handleLikeOnClick} /></li>
-
-                <li><i className="far fa-thumbs-down fa-2x" onClick={this.handleRemoveLikeOnClick} /></li>
-                <li><i className="far fa-comments fa-2x" />Add</li>
+                {!this.findUserLike(post.likes) ? (
+                  <li>
+                    <i
+                      className="far fa-thumbs-up fa-2x i-renderlist-like"
+                      onClick={this.handleLikeOnClick}
+                    />
+                  </li>
+                ) : null}
+                {this.findUserLike(post.likes) ? (
+                  <li>
+                    <i
+                      className="far fa-thumbs-down fa-2x i-renderlist-unlike"
+                      onClick={this.handleRemoveLikeOnClick}
+                    />
+                  </li>
+                ) : null}
+                <li>
+                  <i className="far fa-comments fa-2x i-renderlist-comment" />
+                  Add
+                </li>
               </ul>
             </div>
-
           </div>
         </div>
       );
     }
     return (
-      <div className='renderpost-container'>
+      <div className="renderpost-container">
         <div>
-          <Link to='/feed' className="btn-back black">Back to feed</Link>
+          <Link to="/feed" className="btn-back black">
+            Back to feed
+          </Link>
         </div>
         {postContent}
-
       </div>
     );
   }
