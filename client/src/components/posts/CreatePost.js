@@ -11,6 +11,7 @@ class CreatePost extends Component {
           theme="snow"
           placeholder="Write something..."
           isCreate={true}
+          isUpdate={false}
           btnTitle="Create"
         />
       </div>

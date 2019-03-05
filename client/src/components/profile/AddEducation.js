@@ -10,9 +10,11 @@ import PrivateRoute from "../../HOC/PrivateRoute";
 import isEmpty from "../../utils/isEmpty";
 
 class AddEducation extends Component {
+
   componentDidMount() {
     this.props.clearErrorMessage();
   }
+
   onSubmit = async formData => {
     this.props.clearErrorMessage();
     await this.props.addEducation(formData);
@@ -22,6 +24,7 @@ class AddEducation extends Component {
   };
   render() {
     const { handleSubmit, errors, current } = this.props;
+
     return (
       <div className="profile-container">
         <Link className="btn-back" to="/dashboard">

@@ -3,26 +3,45 @@ import { Link, withRouter } from "react-router-dom";
 import ReactQuill, { Quill } from "react-quill";
 import ImageResize from "quill-image-resize-module-react";
 import { connect } from "react-redux";
-import { createPost } from "../../actions/post";
+import { createPost, updatePost } from "../../actions/post";
 import { clearErrorMessage } from "../../actions/errors";
 import PrivateRoute from "../../HOC/PrivateRoute";
 
 class Editor extends Component {
   state = {
+    id: '',
     body: null,
     title: "",
     name: "",
-    avatar: ""
+    avatar: "",
+    errors: {}
   };
   componentDidMount() {
-    console.log(this.props);
-    this.setState({
-      body: this.props.body,
-      title: this.props.title
-    });
-
     this.props.clearErrorMessage();
   }
+  componentWillReceiveProps(nextProp) {
+    if (nextProp.errors) {
+      this.setState({
+        errors: nextProp.errors
+      });
+    }
+    if (nextProp.id) {
+      this.setState({
+        id: nextProp.id
+      });
+    }
+    if (nextProp.body) {
+      this.setState({
+        body: nextProp.body
+      });
+    }
+    if (nextProp.title) {
+      this.setState({
+        title: nextProp.title
+      });
+    }
+  }
+
   handleBodyChange = body => {
     this.setState({ body });
   };
@@ -31,27 +50,34 @@ class Editor extends Component {
     this.setState({ title: e.target.value });
   };
 
-  handleOnClick = async isCreate => {
-    if (isCreate) {
-      const postData = {
+  handleOnClick = async (isCreate, isUpdate) => {
+    let postData;
+    if (isCreate || isUpdate) {
+
+      postData = {
+        id: this.state.id,
         title: this.state.title,
         body: this.state.body,
         name: this.props.auth.user.name,
         avatar: this.props.auth.user.avatar
-      };
-      this.props.clearErrorMessage();
-      await this.props.createPost(postData, this.props.history);
+      }
+      if (isCreate) {
+        await this.props.createPost(postData, this.props.history);
+      } else {
+
+        await this.props.updatePost(postData, this.props.history);
+      }
     } else {
       console.log("coment");
     }
   };
   render() {
-    const { body, title } = this.state;
-    const { theme, placeholder, isCreate, btnTitle, errors } = this.props;
+    const { body, title, errors } = this.state;
+    const { theme, placeholder, isCreate, isUpdate, btnTitle } = this.props;
 
     return (
       <div className="editor-container">
-        {isCreate ? (
+        {isCreate || isUpdate ? (
           <div>
             <span className="create-post-title">Title: </span>
             <input
@@ -81,7 +107,7 @@ class Editor extends Component {
           <button
             className="btn-create"
             onClick={() => {
-              this.handleOnClick(isCreate);
+              this.handleOnClick(isCreate, isUpdate);
             }}
           >
             {btnTitle}
@@ -161,41 +187,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { createPost, clearErrorMessage }
+  { createPost, updatePost, clearErrorMessage }
 )(PrivateRoute(withRouter(Editor)));
-
-/**
- *   toolbar: [
-    [{ header: "1" }, { header: "2" }, { font: [] }],
-    [{ size: [] }],
-    ["bold", "italic", "underline", "strike", "blockquote"],
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" }
-    ],
-    ["link", "image", "video"],
-    [{ color: [] }, { background: [] }],
-    ["clean"]
-  ],
- */
-
-/*
-  toolbar: [
-    ["bold", "italic", "underline"],
-    ["blockquote", "code-block", "link", "image", "video"],
-
-    [{ header: 1 }, { header: 2 }],
-    [{ list: "ordered" }, { list: "bullet" }],
-    [{ script: "sub" }, { script: "super" }],
-    [{ indent: "-1" }, { indent: "+1" }],
-    [{ direction: "rtl" }],
-
-    [{ size: ["small", false, "large", "huge"] }],
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-
-    [{ color: [] }, { background: [] }],
-    [{ font: [] }],
-    [{ align: [] }]
-  ]*/

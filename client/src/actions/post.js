@@ -28,7 +28,28 @@ export const createPost = (postData, history) => async dispatch => {
     console.log(error);
   }
 };
-
+export const updatePost = (postData, history) => async dispatch => {
+  try {
+    const response = await fetch("http://localhost:5000/api/posts/update", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token")
+      },
+      body: JSON.stringify(postData)
+    });
+    const data = await response;
+    if (data.status === 400 || data.status === 404 || data.status === 403) {
+      const error = await data.json();
+      return dispatch({ type: ERROR_MESSAGE, payload: error });
+    }
+    await data.json();
+    history.push("/myposts");
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const getPosts = () => async dispatch => {
   try {
     dispatch({ type: POST_LOADING });
@@ -103,7 +124,7 @@ export const getPostsByUserId = user_id => async dispatch => {
     dispatch({ type: GET_POSTS, payload: [] });
   }
 };
-export const getPostByPostIdByUserId = (post_id, user_id) => async dispatch => {
+export const getPostByPostIdByUserId = (post_id, user_id, history) => async dispatch => {
   try {
     dispatch({ type: POST_LOADING });
     const response = await fetch(
@@ -120,11 +141,13 @@ export const getPostByPostIdByUserId = (post_id, user_id) => async dispatch => {
     const data = await response;
     if (data.status === 400 || data.status === 404 || data.status === 403) {
       return dispatch({ type: GET_POST, payload: {} });
+    } else if (data.status === 401) {
+      history.push('/');
     }
-
     const post = await data.json();
-    console.log("actiom ", post);
+
     dispatch({ type: GET_POST, payload: post });
+    //return post;
   } catch (error) {
     console.log("error", error);
     dispatch({ type: GET_POST, payload: {} });

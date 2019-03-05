@@ -10,6 +10,7 @@ import PrivateRoute from "../../HOC/PrivateRoute";
 import isEmpty from "../../utils/isEmpty";
 
 class AddExperience extends Component {
+
   componentDidMount() {
     this.props.clearErrorMessage();
   }

@@ -6,6 +6,7 @@ const {
   getPostById,
   getPostByUserId,
   getPostByPostIdByUserId,
+  updatePost,
   deletePost,
   likePost,
   unLikePost,
@@ -19,6 +20,7 @@ const validatePost = require("../../utils/post");
 const validateComment = require("../../utils/comment");
 
 router.post("/", validatePost, requireAuth, createPost);
+router.post("/update", validatePost, requireAuth, updatePost);
 router.get("/", getPosts);
 router.get("/edit/:id/:user_id", requireAuth, getPostByPostIdByUserId);
 router.get("/:id", getPostById);

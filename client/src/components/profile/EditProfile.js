@@ -9,10 +9,13 @@ import CreateProfileForm from "./CreateProfileForm";
 import PrivateRoute from "../../HOC/PrivateRoute";
 import isEmpty from "../../utils/isEmpty";
 class EditProfile extends Component {
+
     async componentDidMount() {
         this.props.clearErrorMessage();
         await this.props.getProfile();
     }
+
+
     onSubmit = async formData => {
         this.props.clearErrorMessage();
         await this.props.createProfile(formData);

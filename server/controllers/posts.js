@@ -3,6 +3,7 @@ const Profile = require("../models/Profile");
 const ObjectId = require("mongoose").Types.ObjectId;
 module.exports = {
   createPost: async (req, res, next) => {
+    console.log(req.body);
     const user = req.user.id;
     const { title, body, name, avatar } = req.body;
     const newPost = new Posts({
@@ -19,6 +20,27 @@ module.exports = {
       res.json({ postNotFound: "No posts found" });
     }
   },
+  updatePost: async (req, res, next) => {
+    const { id, body, title } = req.body;
+    let postFields = {};
+    postFields.body = body;
+    postFields.title = title;
+    try {
+      const post = await Post.findById({ _id: id });
+      if (post) {
+        const updatePost = await Post
+          .findOneAndUpdate(
+            { _id: id },
+            { $set: postFields },
+            { new: true });
+        return res.json(updatePost);
+      }
+      res.status(400).json({});
+    } catch (error) {
+      res.status(404).json({});
+    }
+  },
+
   getPosts: async (req, res, next) => {
     try {
       const posts = await Posts.find().sort({ date: -1 });
@@ -62,9 +84,9 @@ module.exports = {
       if (post.user.toString() === req.params.user_id) {
         return res.json(post);
       }
-      return res.json({});
+      return res.status(401).json({});
     } catch (error) {
-      res.json({ postNotFound: "Post not found" });
+      res.json({});
     }
   },
   deletePost: async (req, res, next) => {
