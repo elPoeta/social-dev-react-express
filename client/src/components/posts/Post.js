@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import RenderPost from "./RenderPost";
 import { getPost } from "../../actions/post";
@@ -24,7 +25,15 @@ class Post extends Component {
         </div>
       );
     }
-    return <div>{postContent}</div>;
+    return (
+      <div className='renderpost-container'>
+        <div>
+          <Link to='/feed' className="btn-back black">Back to feed</Link>
+        </div>
+
+        {postContent}
+      </div>
+    );
   }
 }
 

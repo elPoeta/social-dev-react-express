@@ -3,7 +3,6 @@ const Profile = require("../models/Profile");
 const ObjectId = require("mongoose").Types.ObjectId;
 module.exports = {
   createPost: async (req, res, next) => {
-    console.log(req.body);
     const user = req.user.id;
     const { title, body, name, avatar } = req.body;
     const newPost = new Posts({

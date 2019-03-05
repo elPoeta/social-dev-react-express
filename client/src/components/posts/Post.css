@@ -25,3 +25,12 @@
 .post .ql-snow.ql-toolbar {
   display: none;
 }
+
+.renderpost-container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap:25px;
+}
+.renderpost-container div:first-child{
+  margin: 25px;
+}
