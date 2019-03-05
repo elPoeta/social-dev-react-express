@@ -20,6 +20,7 @@ import Profile from "./components/profile/Profile";
 import CreatePost from "./components/posts/CreatePost";
 import PostFeed from "./components/posts/PostFeed";
 import Post from "./components/posts/Post";
+import EditPost from "./components/posts/EditPost";
 import MyPosts from "./components/profile/MyPosts";
 
 import rootReducers from "./reducers";
@@ -66,6 +67,7 @@ ReactDOM.render(
           <Route path="/profiles" component={Profiles} />
           <Route path="/profile/:username" component={Profile} />
           <Route path="/post/createpost" component={CreatePost} />
+          <Route path="/post/edit/:id" component={EditPost} />
           <Route path="/feed" component={PostFeed} />
           <Route path="/post/:id" component={Post} />
         </Switch>

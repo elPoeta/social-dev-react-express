@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 import ReactQuill, { Quill } from "react-quill";
 import ImageResize from "quill-image-resize-module-react";
 import { connect } from "react-redux";
@@ -16,6 +16,11 @@ class Editor extends Component {
   };
   componentDidMount() {
     console.log(this.props);
+    this.setState({
+      body: this.props.body,
+      title: this.props.title
+    });
+
     this.props.clearErrorMessage();
   }
   handleBodyChange = body => {
@@ -72,7 +77,7 @@ class Editor extends Component {
         <div>
           <Link to="/dashboard" className="btn-back black">
             Back To Dashboard
-        </Link>
+          </Link>
           <button
             className="btn-create"
             onClick={() => {

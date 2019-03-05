@@ -3,7 +3,6 @@ import isEmpty from "../../utils/isEmpty";
 class ProfileAbout extends Component {
   render() {
     const { profile } = this.props;
-    const firstName = profile.user.name.trim().split(" ")[0];
 
     const skills = profile.skills.map((skill, index) => (
       <li key={index}>
@@ -13,13 +12,13 @@ class ProfileAbout extends Component {
     return (
       <div className="profile-about">
         <div className="">
-          <h2>{firstName}'s Bio</h2>
+          <h2>{profile.user.name} Biography</h2>
           <p className="lead">
             {isEmpty(profile.bio) ? (
-              <span>{firstName} does not have a bio</span>
+              <span>{profile.user.name} does not have a bio</span>
             ) : (
-                <span>{profile.bio}</span>
-              )}
+              <span>{profile.bio}</span>
+            )}
           </p>
         </div>
         <div>
