@@ -2,19 +2,13 @@
   display: grid;
   grid-template-columns: 1fr;
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
 }
-.post-container h2 {
-  text-align: center;
-  color: #2a9af2;
-  font-size: 2em;
-  font-weight: 900;
-}
+
 .post {
   display: grid;
   grid-template-columns: 1fr;
   margin: 0 auto;
-  width: 80%;
   border: 1px solid #ccc;
   border-radius: 0.5em;
   background-color: #fff;
@@ -29,6 +23,8 @@
 .renderpost-container {
   display: grid;
   grid-template-columns: 1fr;
+  margin: 0 auto;
+  width: 90%;
   grid-gap: 25px;
 }
 .renderpost-container div:first-child {
@@ -41,6 +37,8 @@
   display: inline;
   list-style: none;
   padding: 15px;
+  font-size: 1.2em;
+  font-weight: 700;
 }
 .renderpost-listmenu i {
   padding: 5px;
@@ -55,4 +53,61 @@
 }
 .i-renderlist-comment {
   color: #444;
+}
+
+.post-header {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  text-align: center;
+  justify-items: center;
+  background-color: #2a9af2;
+  box-shadow: 0px 1px 0px 0px #2a9af2;
+  color: #fff;
+  border-radius: 15px;
+  margin: 0 auto;
+  align-items: center;
+  grid-gap: 10px;
+}
+.post-header-name-img-container{
+  align-self: center;
+  
+}
+.post-header-name-img-container figure img{
+  display: block;
+  margin: 0 auto;
+}
+.post-header-username{
+  text-align: center;
+  color: #fff;
+  font-size: 1.3em;
+}
+.post-header-avatar{
+  border-radius: 50%;
+  text-align: center;
+
+}
+.post-header-title{
+  color: #fff;
+  font-size: 2.5em;
+  font-weight: 900;
+  text-align: center;
+}
+.divisor-postheader {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 155, 255, 0)
+  );
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.post-header-icons-list li{
+  display: inline;
+  text-align: center;
+  padding: 10px;
+  list-style: none;
 }

@@ -34,17 +34,16 @@ class EditPost extends Component {
   }
 
   render() {
-    const { post, loading } = this.props;
+    const { post, loading } = this.props.post;
     const { id, title, body } = this.state;
     let editContent;
-    if (post === null || loading) {
+    if (post === null || loading || Object.keys(post).length === 0) {
       return (<Spinner />)
     } else {
       editContent = (<Editor
         theme="snow"
         placeholder="Write something..."
         isCreate={false}
-        isUpdate={true}
         btnTitle="Update"
         id={id}
         body={body}

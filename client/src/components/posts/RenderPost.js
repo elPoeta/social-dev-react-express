@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactQuill from "react-quill";
+import PostHeader from './PostHeader';
 
 class RenderPost extends Component {
   state = {
@@ -16,9 +17,12 @@ class RenderPost extends Component {
 
   render() {
     const { body } = this.state;
-
+    const { post } = this.props;
     return (
       <div className="post">
+        <PostHeader
+          post={post}
+        />
         <ReactQuill value={body} bounds={".app"} readOnly={true} />
 
       </div>

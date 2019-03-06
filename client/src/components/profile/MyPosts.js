@@ -32,35 +32,64 @@ class MyPosts extends Component {
   render() {
     const { posts, loading } = this.props.post;
     let postContent;
-    if (posts === null || loading) {
+    if (posts === null || loading || posts.length === 0) {
       postContent = <Spinner />;
-    } else {
-      postContent = posts.map(post => (
-        <li className="grid-myposts" key={post._id}>
-          <span>{post.title}</span>
-          <span>
-            <Moment format="DD/MM/YYYY">{post.date}</Moment>
-          </span>
-          <span>
-            {" "}
-            <Link to={`/post/${post._id}`}>
-              <i className="fas fa-eye i-view" />
-            </Link>{" "}
-          </span>
-          <span>
-            <Link to={`/post/edit/${post._id}`}>
-              {" "}
-              <i className="fas fa-pencil-alt i-edit" />
+    } else if (posts.length === 0) {
+      postContent = (
+        <div>
+          <p>
+            Do you not have a post{" "}
+            <Link to="/post/createpost" className="btn-back black">
+              Create Post
             </Link>
-          </span>
-          <span>
-            <i
-              className="fas fa-trash-alt i-delete"
-              onClick={() => this.handleOpenModal(post._id)}
-            />
-          </span>
-        </li>
-      ));
+          </p>
+        </div>
+      )
+    } else {
+      postContent = (
+        <div>
+          <ul>
+            <li className="grid-myposts title-credentials" key={-1}>
+              <span>Title</span>
+              <span>Create on</span>
+              <span>View</span>
+              <span>Edit</span>
+              <span>Delete</span>
+            </li>
+            <hr />
+            {posts.map(post => (
+              <li className="grid-myposts" key={post._id}>
+                <span>{post.title}</span>
+                <span>
+                  <Moment format="DD/MM/YYYY">{post.date}</Moment>
+                </span>
+                <span>
+                  {" "}
+                  <Link to={`/post/${post._id}`}>
+                    <i className="fas fa-eye i-view" />
+                  </Link>{" "}
+                </span>
+                <span>
+                  <Link to={`/post/edit/${post._id}`}>
+                    {" "}
+                    <i className="fas fa-pencil-alt i-edit" />
+                  </Link>
+                </span>
+                <span>
+                  <i
+                    className="fas fa-trash-alt i-delete"
+                    onClick={() => this.handleOpenModal(post._id)}
+                  />
+                </span>
+              </li>
+            ))}
+            <hr />
+          </ul>
+          <Link to="/post/createpost" className="btn-back black">
+            New Post
+      </Link>
+        </div>
+      )
     }
     return (
       <div className="profile-container">
@@ -70,34 +99,7 @@ class MyPosts extends Component {
         <div className="myposts">
           <div className="">
             <h2>My Posts</h2>
-            {posts.length === 0 ? (
-              <div>
-                <p>
-                  Do you not have a post{" "}
-                  <Link to="/post/createpost" className="btn-back black">
-                    Create Post
-                  </Link>
-                </p>
-              </div>
-            ) : (
-              <div>
-                <ul>
-                  <li className="grid-myposts title-credentials" key={-1}>
-                    <span>Title</span>
-                    <span>Create on</span>
-                    <span>View</span>
-                    <span>Edit</span>
-                    <span>Delete</span>
-                  </li>
-                  <hr />
-                  {postContent}
-                  <hr />
-                </ul>
-                <Link to="/post/createpost" className="btn-back black">
-                  New Post
-                </Link>
-              </div>
-            )}
+            {postContent}
           </div>
         </div>
         <ReactModal

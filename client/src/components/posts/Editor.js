@@ -50,45 +50,39 @@ class Editor extends Component {
     this.setState({ title: e.target.value });
   };
 
-  handleOnClick = async (isCreate, isUpdate) => {
-    let postData;
-    if (isCreate || isUpdate) {
-
-      postData = {
-        id: this.state.id,
-        title: this.state.title,
-        body: this.state.body,
-        name: this.props.auth.user.name,
-        avatar: this.props.auth.user.avatar
-      }
-      if (isCreate) {
-        await this.props.createPost(postData, this.props.history);
-      } else {
-
-        await this.props.updatePost(postData, this.props.history);
-      }
+  handleOnClick = async isCreate => {
+    const postData = {
+      id: this.state.id,
+      title: this.state.title,
+      body: this.state.body,
+      name: this.props.auth.user.name,
+      avatar: this.props.auth.user.avatar
+    }
+    if (isCreate) {
+      await this.props.createPost(postData, this.props.history);
     } else {
-      console.log("coment");
+
+      await this.props.updatePost(postData, this.props.history);
     }
   };
   render() {
     const { body, title, errors } = this.state;
-    const { theme, placeholder, isCreate, isUpdate, btnTitle } = this.props;
+    const { theme, placeholder, isCreate, btnTitle } = this.props;
 
     return (
       <div className="editor-container">
-        {isCreate || isUpdate ? (
-          <div>
-            <span className="create-post-title">Title: </span>
-            <input
-              type="text"
-              onChange={this.handleOnChange}
-              placeholder="Post Title"
-              value={title}
-              className="create-post-input"
-            />
-          </div>
-        ) : null}
+
+        <div>
+          <span className="create-post-title">Title: </span>
+          <input
+            type="text"
+            onChange={this.handleOnChange}
+            placeholder="Post Title"
+            value={title}
+            className="create-post-input"
+          />
+        </div>
+
         {errors.title && <div className="invalid">{errors.title}</div>}
         <ReactQuill
           theme={theme}
@@ -107,7 +101,7 @@ class Editor extends Component {
           <button
             className="btn-create"
             onClick={() => {
-              this.handleOnClick(isCreate, isUpdate);
+              this.handleOnClick(isCreate);
             }}
           >
             {btnTitle}

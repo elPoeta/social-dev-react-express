@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import RenderPost from "./RenderPost";
 import { getPost, likePost, removeLikePost } from "../../actions/post";
 import Spinner from "../common/Spinner";
+
 import "./Post.css";
 class Post extends Component {
   async componentDidMount() {
@@ -30,8 +31,7 @@ class Post extends Component {
     } else if (Object.keys(post).length > 0) {
       postContent = (
         <div className="post-container">
-          <h2>{post.title}</h2>
-          <RenderPost body={post.body} id={post._id} />
+          <RenderPost body={post.body} id={post._id} post={post} />
           <div>
             <hr className="divisor" />
             <div className="renderpost-listmenu">
