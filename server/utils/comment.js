@@ -9,8 +9,8 @@ module.exports = validatePostInput = (req, res, next) => {
     data.body = !isEmpty(data.body) ? data.body : "";
 
 
-    if (!Validator.isLength(data.body, { min: 10, max: 200 })) {
-        errors.body = "Body needs to between 10 and 200 characters";
+    if (!Validator.isLength(data.body, { min: 15 })) {
+        errors.body = "Body needs 10 or more characters";
     }
 
 

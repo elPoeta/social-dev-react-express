@@ -1,12 +1,64 @@
 import React, { Component } from 'react'
 import ReactQuill from 'react-quill';
+import { connect } from 'react-redux';
+import { clearErrorMessage } from '../../actions/errors';
+import { createComment } from '../../actions/post';
 
 class CommentEditor extends Component {
+    state = {
+        id: '',
+        body: null,
+        name: "",
+        avatar: "",
+        errors: {},
+        loading: false
+    };
+    componentDidMount() {
+        this.props.clearErrorMessage();
+    }
+    componentWillReceiveProps(nextProp) {
+        if (nextProp.errors) {
+            this.setState({
+                errors: nextProp.errors
+            });
+        }
+
+    }
+
+    handleBodyChange = body => {
+        this.setState({ body });
+    };
+
+    handleOnClick = async () => {
+        const commentData = {
+            id: this.props.id,
+            body: this.state.body,
+            name: this.props.auth.user.name,
+            avatar: this.props.auth.user.avatar
+        }
+        this.props.clearErrorMessage();
+        this.setState({ loading: true });
+        await this.props.createComment(commentData);
+        this.setState({ loading: false });
+        if (Object.keys(this.state.errors).length === 0) {
+            this.setState({
+                id: '',
+                body: null,
+                name: "",
+                avatar: "",
+                errors: {}
+            });
+        }
+    };
+
     render() {
-        const { body, placeholder, theme, btnTitle } = this.props;
+        const { body, errors } = this.state;
+        const { placeholder, theme, btnTitle } = this.props;
+
         return (
             <div className="comment-editor-container">
-                <h3 className='comment-title'>Comment</h3>
+                <h3 className='comment-title'>Comment{' '}
+                    {this.state.loading ? <span className='comment-loading'> LOADING...</span> : null}</h3>
                 <ReactQuill
                     theme={theme}
                     onChange={this.handleBodyChange}
@@ -16,10 +68,11 @@ class CommentEditor extends Component {
                     bounds={".app"}
                     placeholder={placeholder}
                 />
+                {errors.body && <div className="invalid">{errors.body}</div>}
                 <div>
                     <button
                         className="btn-create"
-
+                        onClick={this.handleOnClick}
                     >
                         {btnTitle}
                     </button>
@@ -79,5 +132,8 @@ CommentEditor.formats = [
     "code-block"
 ];
 
-
-export default CommentEditor;
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+})
+export default connect(mapStateToProps, { createComment, clearErrorMessage })(CommentEditor);

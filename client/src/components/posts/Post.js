@@ -68,7 +68,7 @@ class Post extends Component {
                   <i className="far fa-comments fa-2x i-renderlist-comment"
                     onClick={this.handleShowComments}
                   />
-                  View
+                  {!this.state.showComments ? 'View' : 'Hide'}
                 </li>
               </ul>
             </div>
@@ -83,13 +83,16 @@ class Post extends Component {
                 (<h3>No comments for this post</h3>) :
                 post.comments.map(comment => (
                   <RenderPostComment
+                    key={comment._id}
                     body={comment.body}
                   />
                 )) : null}
           </div>
           {isAuthenticated ?
             (<div>
-              <Comment />
+              <Comment
+                id={post._id}
+              />
             </div>)
             : null}
         </div>
