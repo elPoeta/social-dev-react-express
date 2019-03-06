@@ -1,0 +1,53 @@
+.comment-post {
+    margin: 1em 4em;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+   
+  }
+  .comment-editor-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .comment-post .ql-container {
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    background: #fefcfc;
+    font-size: 1em;
+  }
+  
+
+  .comment-post .ql-bubble .ql-editor {
+   
+    border-radius: 0.5em;
+  }
+  .comment-post .quill {
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    background-color: #fff;
+  }
+  .comment-post .ql-editor {
+    min-height: 10em;
+    border-radius: 0.5em;
+
+  }
+
+
+  .btn-create {
+    color: #fff;
+    background-color: #2a9af2;
+    border: none;
+    padding: 10px;
+    border-radius: 0.5em;
+    width: 6em;
+    font-size: 1.1em;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 15px;
+    justify-self: end;
+  }
+  
+  .comment-title{
+      color: #444;
+      font-style: italic;
+      font-weight: 700;
+  }

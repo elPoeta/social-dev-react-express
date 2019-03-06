@@ -87,7 +87,7 @@ class Editor extends Component {
         <ReactQuill
           theme={theme}
           onChange={this.handleBodyChange}
-          value={body}
+          value={body || ''}
           modules={Editor.modules}
           formats={Editor.formats}
           bounds={".create-post"}

@@ -19,10 +19,6 @@
   border-top-right-radius: 0.5em;
 }
 
-.create-post .ql-bubble .ql-editor {
-  border: 1px solid #ccc;
-  border-radius: 0.5em;
-}
 
 .create-post .ql-editor {
   min-height: 25em;

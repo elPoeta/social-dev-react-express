@@ -23,7 +23,7 @@ class RenderPost extends Component {
         <PostHeader
           post={post}
         />
-        <ReactQuill value={body} bounds={".app"} readOnly={true} />
+        <ReactQuill value={body || ''} bounds={".app"} readOnly={true} />
 
       </div>
     );

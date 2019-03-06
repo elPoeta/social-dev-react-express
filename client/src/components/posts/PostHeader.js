@@ -2,7 +2,6 @@ import React from 'react'
 import Moment from 'react-moment'
 const PostHeader = props => {
     const { post } = props;
-    console.log(post)
     return (
         <div className="post-header">
             <div className='post-header-name-img-container'>
