@@ -8,7 +8,7 @@ import {
 
 export const createPost = (postData, history) => async dispatch => {
   try {
-    const response = await fetch("http://localhost:5000/api/posts", {
+    const response = await fetch("/api/posts", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -30,7 +30,7 @@ export const createPost = (postData, history) => async dispatch => {
 };
 export const updatePost = (postData, history) => async dispatch => {
   try {
-    const response = await fetch("http://localhost:5000/api/posts/update", {
+    const response = await fetch("/api/posts/update", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -53,7 +53,7 @@ export const updatePost = (postData, history) => async dispatch => {
 export const getPosts = () => async dispatch => {
   try {
     dispatch({ type: POST_LOADING });
-    const response = await fetch("http://localhost:5000/api/posts", {
+    const response = await fetch("/api/posts", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -77,7 +77,7 @@ export const getPosts = () => async dispatch => {
 export const getPost = id => async dispatch => {
   try {
     dispatch({ type: POST_LOADING });
-    const response = await fetch(`http://localhost:5000/api/posts/${id}`, {
+    const response = await fetch(`/api/posts/${id}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -102,7 +102,7 @@ export const getPostsByUserId = user_id => async dispatch => {
   try {
     dispatch({ type: POST_LOADING });
     const response = await fetch(
-      `http://localhost:5000/api/posts/user/${user_id}`,
+      `/api/posts/user/${user_id}`,
       {
         method: "GET",
         headers: {
@@ -128,7 +128,7 @@ export const getPostByPostIdByUserId = (post_id, user_id, history) => async disp
   try {
     dispatch({ type: POST_LOADING });
     const response = await fetch(
-      `http://localhost:5000/api/posts/edit/${post_id}/${user_id}`,
+      `/api/posts/edit/${post_id}/${user_id}`,
       {
         method: "GET",
         headers: {
@@ -157,7 +157,7 @@ export const getPostByPostIdByUserId = (post_id, user_id, history) => async disp
 export const likePost = id => async dispatch => {
   try {
 
-    const response = await fetch(`http://localhost:5000/api/posts/like/${id}`, {
+    const response = await fetch(`/api/posts/like/${id}`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -184,7 +184,7 @@ export const likePost = id => async dispatch => {
 
 export const removeLikePost = id => async dispatch => {
   try {
-    const response = await fetch(`http://localhost:5000/api/posts/unlike/${id}`, {
+    const response = await fetch(`/api/posts/unlike/${id}`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -212,7 +212,7 @@ export const removeLikePost = id => async dispatch => {
 export const createComment = commentData => async dispatch => {
   try {
     //dispatch({ type: POST_LOADING });
-    const response = await fetch(`http://localhost:5000/api/posts/comment/${commentData.id}`, {
+    const response = await fetch(`/api/posts/comment/${commentData.id}`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -237,7 +237,7 @@ export const createComment = commentData => async dispatch => {
 export const deletePost = id => async dispatch => {
   try {
     dispatch({ type: POST_LOADING });
-    const response = await fetch(`http://localhost:5000/api/posts/${id}`, {
+    const response = await fetch(`/api/posts/${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

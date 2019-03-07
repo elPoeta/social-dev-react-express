@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 
 export const signUp = formData => async dispatch => {
   try {
-    const response = await fetch("http://localhost:5000/api/user/register", {
+    const response = await fetch("/api/user/register", {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8"
@@ -39,7 +39,7 @@ export const signUp = formData => async dispatch => {
 
 export const login = formData => async dispatch => {
   try {
-    const response = await fetch("http://localhost:5000/api/user/login", {
+    const response = await fetch("/api/user/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8"

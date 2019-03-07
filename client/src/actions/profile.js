@@ -9,7 +9,7 @@ import {
 export const getProfile = () => async dispatch => {
   try {
     dispatch({ type: PROFILE_LOADING });
-    const response = await fetch("http://localhost:5000/api/profile", {
+    const response = await fetch("/api/profile", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -32,7 +32,7 @@ export const getProfile = () => async dispatch => {
 export const getAllProfiles = () => async dispatch => {
   try {
     dispatch({ type: PROFILE_LOADING });
-    const response = await fetch("http://localhost:5000/api/profile/all", {
+    const response = await fetch("/api/profile/all", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -56,7 +56,7 @@ export const getProfileUsername = username => async dispatch => {
   try {
     dispatch({ type: PROFILE_LOADING });
     const response = await fetch(
-      `http://localhost:5000/api/profile/username/${username}`,
+      `/api/profile/username/${username}`,
       {
         method: "GET",
         headers: {
@@ -80,7 +80,7 @@ export const getProfileUsername = username => async dispatch => {
 };
 export const createProfile = formData => async dispatch => {
   try {
-    const response = await fetch("http://localhost:5000/api/profile", {
+    const response = await fetch("/api/profile", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -103,7 +103,7 @@ export const createProfile = formData => async dispatch => {
 export const addExperience = formData => async dispatch => {
   try {
     const response = await fetch(
-      "http://localhost:5000/api/profile/experience",
+      "/api/profile/experience",
       {
         method: "POST",
         headers: {
@@ -128,7 +128,7 @@ export const addExperience = formData => async dispatch => {
 export const deleteExperience = exp_id => async dispatch => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/profile/experience/${exp_id}`,
+      `/api/profile/experience/${exp_id}`,
       {
         method: "DELETE",
         headers: {
@@ -153,7 +153,7 @@ export const deleteExperience = exp_id => async dispatch => {
 export const addEducation = formData => async dispatch => {
   try {
     const response = await fetch(
-      "http://localhost:5000/api/profile/education",
+      "/api/profile/education",
       {
         method: "POST",
         headers: {
@@ -178,7 +178,7 @@ export const addEducation = formData => async dispatch => {
 export const deleteEducation = edu_id => async dispatch => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/profile/education/${edu_id}`,
+      `/api/profile/education/${edu_id}`,
       {
         method: "DELETE",
         headers: {
