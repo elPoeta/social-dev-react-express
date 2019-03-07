@@ -69,7 +69,7 @@ class Post extends Component {
   render() {
     const { post, loading } = this.props.post;
     const { isAuthenticated } = this.props.auth;
-    console.log(this.state.isLoading)
+
     let postContent;
     if (post === null || loading || Object.keys(post).length === 0) {
       postContent = <Spinner classNames='spinner2' />;

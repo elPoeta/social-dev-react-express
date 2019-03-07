@@ -4,7 +4,9 @@
   margin: 0 auto;
   width: 90%;
 }
-
+.post-container .ql-editor{
+  font-size: 1.4em;
+}
 .post {
   display: grid;
   grid-template-columns: 1fr;
