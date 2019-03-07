@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore, compose, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
 import jwtDecode from "jwt-decode";
 
 import App from "./components/App";
@@ -23,32 +21,27 @@ import Post from "./components/posts/Post";
 import EditPost from "./components/posts/EditPost";
 import MyPosts from "./components/profile/MyPosts";
 
-import rootReducers from "./reducers";
-import isEmpty from "./utils/isEmpty";
+import store from './store';
+
+
+import { AUTH_USER } from './actions/types';
+import { logout } from './actions/auth';
+import { clearProfile } from './actions/profile';
 
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
-const middleware = [thunk];
-let user = {};
-let isAuthenticated = false;
+
+
+
 if (localStorage.token) {
-  isAuthenticated = !isEmpty(localStorage.token);
-  user = jwtDecode(localStorage.getItem("token"));
+  if (jwtDecode(localStorage.getItem("token")).exp < Date.now()) {
+    store.dispatch(logout());
+    store.dispatch(clearProfile());
+    window.location.href = '/login';
+  }
+  store.dispatch({ type: AUTH_USER, payload: jwtDecode(localStorage.getItem("token")) });
 }
-const store = createStore(
-  rootReducers,
-  {
-    auth: {
-      isAuthenticated,
-      user
-    }
-  },
-  compose(
-    applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
 
 ReactDOM.render(
   <Provider store={store}>
