@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 import { connect } from "react-redux";
 import { clearErrorMessage } from "../../actions/errors";
 import { createComment } from "../../actions/post";
-
+import Spinner from '../common/Spinner';
 class CommentEditor extends Component {
   state = {
     id: "",
@@ -59,7 +59,7 @@ class CommentEditor extends Component {
         <h3 className="comment-title">
           Comment{" "}
           {this.state.loading ? (
-            <span className="comment-loading"> LOADING...</span>
+            <span><Spinner classNames='loader-comment' /></span>
           ) : null}
         </h3>
         <ReactQuill

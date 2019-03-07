@@ -13,7 +13,7 @@ class Profiles extends Component {
         let profilesItems;
 
         if (profiles === null || loading) {
-            profilesItems = <Spinner />;
+            profilesItems = <Spinner classNames='spinner2' />;
         } else {
             if (profiles.length > 0) {
                 profilesItems = profiles.map(profile => (

@@ -19,7 +19,7 @@ class Dashboard extends Component {
     let dashboardContent;
 
     if (profile === null || loading) {
-      dashboardContent = <Spinner />;
+      dashboardContent = <Spinner classNames='spinner2' />;
     } else {
       if (Object.keys(profile).length > 0) {
         dashboardContent = (

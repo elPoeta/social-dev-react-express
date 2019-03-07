@@ -38,7 +38,7 @@ class EditPost extends Component {
     const { id, title, body } = this.state;
     let editContent;
     if (post === null || loading || Object.keys(post).length === 0) {
-      return (<Spinner />)
+      return (<Spinner classNames='spinner2' />)
     } else {
       editContent = (<Editor
         theme="snow"

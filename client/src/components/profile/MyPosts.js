@@ -33,7 +33,7 @@ class MyPosts extends Component {
     const { posts, loading } = this.props.post;
     let postContent;
     if (posts === null || loading) {
-      postContent = <Spinner />;
+      postContent = <Spinner classNames='spinner2' />;
     } else if (posts.length === 0) {
       postContent = (
         <div>

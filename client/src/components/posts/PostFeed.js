@@ -12,7 +12,7 @@ class PostFeed extends Component {
     let postContent;
 
     if (posts === null || loading) {
-      postContent = <Spinner />;
+      postContent = <Spinner classNames='spinner2' />;
     } else {
       postContent = posts.map(post => <PostItem key={post._id} post={post} />);
     }

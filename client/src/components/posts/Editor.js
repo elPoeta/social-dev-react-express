@@ -20,7 +20,7 @@ class Editor extends Component {
     this.props.clearErrorMessage();
   }
   componentWillReceiveProps(nextProp) {
-    console.log(nextProp);
+
     if (nextProp.errors) {
       this.setState({
         errors: nextProp.errors

@@ -18,7 +18,7 @@ class Profile extends Component {
     const { profile, loading } = this.props.profile;
     let profileContent;
     if (profile === null || loading) {
-      profileContent = <Spinner />;
+      profileContent = <Spinner classNames='spinner2' />;
     } else {
       profileContent = (
         <div>

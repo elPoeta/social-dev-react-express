@@ -52,11 +52,6 @@
   font-weight: 700;
 }
 
-.comment-loading {
-  color: #9e1e1e;
-  font-style: italic;
-  font-weight: 900;
-}
 .comments-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -87,7 +82,7 @@
 
 .comment-desc-container {
   display: grid;
-  grid-template-columns: 100px 1fr 100px;
+  grid-template-columns: 100px 1fr 130px 50px;
   grid-template-rows: 10px;
   align-items: center;
 }
@@ -99,4 +94,10 @@
 
 .comment-desc-container h3 {
   color: #2a9af2;
+}
+
+.i-delete-comment{
+  color: #7e0707;
+  padding: 5px;
+  cursor: pointer;
 }

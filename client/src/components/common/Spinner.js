@@ -1,5 +1,5 @@
 import React from 'react';
 import './Spinner.css';
 
-export default () => <div className="spinner2"></div>;
+export default props => <div className={props.classNames}></div>;
 
