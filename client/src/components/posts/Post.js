@@ -125,7 +125,9 @@ class Post extends Component {
                             <img src={comment.avatar} alt={comment.name} />
                           </figure>
                           <h3>{comment.name}</h3>
-                          {this.state.isLoading ? <Spinner classNames='loader' /> : <Moment format="DD-MM-YYYY">{comment.date}</Moment>}
+                          {this.state.isLoading && this.isUserComment(comment.user) ?
+                            <Spinner classNames='loader' /> :
+                            <Moment format="DD-MM-YYYY">{comment.date}</Moment>}
                           {this.isUserComment(comment.user) ?
                             <i className="fas fa-trash i-delete-comment" onClick={() => { this.handleDeleteComment(comment._id) }} />
                             : null}

@@ -1,4 +1,5 @@
-module.exports = {
-    MONGO_URI: 'mongodb://elpoeta:pass123@ds147125.mlab.com:47125/social-dev',
-    JWT_SECRET: 'zHsQ9qOSsdi6aXokMUi_SxLm2v-oA3SY4QvzIuLYRpQzzupuRoLpqJ6Dg8-1r53LRPijQ2nXlzrYgIaCJ00WbyMcpaeU8AcYxtk3cuoa7W1DyswUtDEjCsonAwusF04Hh3oXTn1FnZHaAuTQqENl-Lxd8iVNUbQWvPhi_fs0eUKvWjULkc-P4FjAuNAeST2_y1xOVjsZMAMBaMPDIOMrmBR0xCI5BbucnvE2LJ3KBnElLrxZT0flqxH1Vj9u2hLmm3g6mZlHBt0Spqvwznw5-dzZqkKvVf81Z8aG8LzH6dQae-BN8aPoUq1mWsWKI4bUsExH54yzaqk9j2dIe31Y9Q'
+if (process.env.NODE_ENV === "production") {
+    module.exports = require('./keys_prod');
+} else {
+    module.exports = require('./keys_dev');
 }
