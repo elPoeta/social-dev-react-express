@@ -13,11 +13,18 @@ class PostFeed extends Component {
 
     if (posts === null || loading) {
       postContent = <Spinner classNames='spinner2' />;
-    } else {
+    } else if (posts.length === 0) {
+      postContent = <p>Posts not found...</p>
+    }
+    else {
       postContent = posts.map(post => <PostItem key={post._id} post={post} />);
     }
 
-    return <div>{postContent}</div>;
+    return (
+      <div>
+        <h2>Posts</h2>
+        {postContent}
+      </div>);
   }
 }
 const mapStateToProps = state => ({

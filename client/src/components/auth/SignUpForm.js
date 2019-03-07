@@ -30,6 +30,7 @@ const SignUpForm = props => {
           classname={classnames("input", errors.email && "invalid-input")}
           component={CustomInput}
         />
+        <span className="profile-input-info">If you want a profile image, use a Gravatar email</span>
         {errors.email && <div className="invalid">{errors.email}</div>}
         <label>Password</label>
         <Field
