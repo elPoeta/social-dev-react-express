@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import Moment from "react-moment";
 import RenderPost from "./RenderPost";
-import Comment from './Comment';
-import RenderPostComment from './RenderPostComment';
+import Comment from "./Comment";
+import RenderPostComment from "./RenderPostComment";
 import { getPost, likePost, removeLikePost } from "../../actions/post";
 import Spinner from "../common/Spinner";
 
@@ -11,7 +12,7 @@ import "./Post.css";
 class Post extends Component {
   state = {
     showComments: false
-  }
+  };
   async componentDidMount() {
     if (this.props.match.params.id) {
       await this.props.getPost(this.props.match.params.id);
@@ -20,7 +21,9 @@ class Post extends Component {
 
   handleLikeOnClick = async () => {
     const { user } = this.props.auth;
-    if (user.id !== this.props.post.post.user) { await this.props.likePost(this.props.post.post._id); }
+    if (user.id !== this.props.post.post.user) {
+      await this.props.likePost(this.props.post.post._id);
+    }
   };
   handleRemoveLikeOnClick = async () => {
     await this.props.removeLikePost(this.props.post.post._id);
@@ -33,8 +36,7 @@ class Post extends Component {
     this.setState((prevSate, props) => ({
       showComments: !prevSate.showComments
     }));
-
-  }
+  };
   render() {
     const { post, loading } = this.props.post;
     const { isAuthenticated } = this.props.auth;
@@ -49,13 +51,14 @@ class Post extends Component {
           <div>
             <div className="renderpost-listmenu">
               <ul>
-                {isAuthenticated ? !this.isUserLike(post.likes) ?
-                  (<li>
-                    <i
-                      className="far fa-thumbs-up fa-2x i-renderlist-like"
-                      onClick={this.handleLikeOnClick}
-                    />
-                  </li>
+                {isAuthenticated ? (
+                  !this.isUserLike(post.likes) ? (
+                    <li>
+                      <i
+                        className="far fa-thumbs-up fa-2x i-renderlist-like"
+                        onClick={this.handleLikeOnClick}
+                      />
+                    </li>
                   ) : this.isUserLike(post.likes) ? (
                     <li>
                       <i
@@ -63,12 +66,14 @@ class Post extends Component {
                         onClick={this.handleRemoveLikeOnClick}
                       />
                     </li>
-                  ) : null : null}
+                  ) : null
+                ) : null}
                 <li>
-                  <i className="far fa-comments fa-2x i-renderlist-comment"
+                  <i
+                    className="far fa-comments fa-2x i-renderlist-comment"
                     onClick={this.handleShowComments}
                   />
-                  {!this.state.showComments ? 'View' : 'Hide'}
+                  {!this.state.showComments ? "View" : "Hide"}
                 </li>
               </ul>
             </div>
@@ -77,24 +82,33 @@ class Post extends Component {
             <hr className="divisor" />
           </div>
 
-          <div>
-            {this.state.showComments ?
-              post.comments.length === 0 ?
-                (<h3>No comments for this post</h3>) :
+          <div className="comments-container">
+            {this.state.showComments ? (
+              post.comments.length === 0 ? (
+                <h3>No comments for this post</h3>
+              ) : (
                 post.comments.map(comment => (
-                  <RenderPostComment
-                    key={comment._id}
-                    body={comment.body}
-                  />
-                )) : null}
+                  <section key={comment._id}>
+                    <div className="comment-desc">
+                      <div className="comment-desc-container">
+                        <figure>
+                          <img src={comment.avatar} alt={comment.name} />
+                        </figure>
+                        <h3>{comment.name}</h3>
+                        <Moment format="DD-MM-YYYY">{comment.date}</Moment>
+                      </div>
+                      <RenderPostComment body={comment.body} />
+                    </div>
+                  </section>
+                ))
+              )
+            ) : null}
           </div>
-          {isAuthenticated ?
-            (<div>
-              <Comment
-                id={post._id}
-              />
-            </div>)
-            : null}
+          {isAuthenticated ? (
+            <div>
+              <Comment id={post._id} />
+            </div>
+          ) : null}
         </div>
       );
     }
@@ -106,7 +120,6 @@ class Post extends Component {
           </Link>
         </div>
         {postContent}
-
       </div>
     );
   }
@@ -121,4 +134,3 @@ export default connect(
   mapStateToProps,
   { getPost, likePost, removeLikePost }
 )(Post);
-

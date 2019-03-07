@@ -68,25 +68,23 @@
   align-items: center;
   grid-gap: 10px;
 }
-.post-header-name-img-container{
+.post-header-name-img-container {
   align-self: center;
-  
 }
-.post-header-name-img-container figure img{
+.post-header-name-img-container figure img {
   display: block;
   margin: 0 auto;
 }
-.post-header-username{
+.post-header-username {
   text-align: center;
   color: #fff;
   font-size: 1.3em;
 }
-.post-header-avatar{
+.post-header-avatar {
   border-radius: 50%;
   text-align: center;
-
 }
-.post-header-title{
+.post-header-title {
   color: #fff;
   font-size: 2.5em;
   font-weight: 900;
@@ -105,7 +103,7 @@
   margin-top: 15px;
 }
 
-.post-header-icons-list li{
+.post-header-icons-list li {
   display: inline;
   text-align: center;
   padding: 10px;
