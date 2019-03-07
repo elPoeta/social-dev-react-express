@@ -6,7 +6,7 @@ module.exports = validateProfileInput = (req, res, next) => {
   const data = req.body;
 
   if (Array.isArray(data.skills)) {
-    data.skills = data.skills.join(',');
+    data.skills = data.skills.join(",");
   }
   data.username = !isEmpty(data.username) ? data.username : "";
   data.status = !isEmpty(data.status) ? data.status : "";
@@ -57,7 +57,11 @@ module.exports = validateProfileInput = (req, res, next) => {
       errors.linkedin = "Not a valid URL";
     }
   }
-
+  if (!isEmpty(data.social.git)) {
+    if (!Validator.isURL(data.social.git)) {
+      errors.git = "Not a valid URL";
+    }
+  }
   if (!isEmpty(errors)) {
     return res.status(400).json(errors);
   }

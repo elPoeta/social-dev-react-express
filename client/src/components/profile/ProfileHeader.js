@@ -2,7 +2,6 @@ import React from "react";
 import isEmpty from "../../utils/isEmpty";
 import "./Profile.css";
 const ProfileHeader = props => {
-
   const { profile } = props;
 
   return (
@@ -30,7 +29,26 @@ const ProfileHeader = props => {
               <i className="fas fa-globe fa-2x i-color-wh" />
             </a>
           )}
-
+          {isEmpty(profile.social && profile.social.linkedin) ? null : (
+            <a
+              className=""
+              href={profile.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-linkedin fa-2x i-color-wh" />
+            </a>
+          )}
+          {isEmpty(profile.social && profile.social.git) ? null : (
+            <a
+              className=""
+              href={profile.social.git}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-git fa-2x i-color-wh" />
+            </a>
+          )}
           {isEmpty(profile.social && profile.social.twitter) ? null : (
             <a
               className=""
@@ -53,17 +71,6 @@ const ProfileHeader = props => {
             </a>
           )}
 
-          {isEmpty(profile.social && profile.social.linkedin) ? null : (
-            <a
-              className=""
-              href={profile.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fab fa-linkedin fa-2x i-color-wh" />
-            </a>
-          )}
-
           {isEmpty(profile.social && profile.social.youtube) ? null : (
             <a
               className=""
@@ -78,7 +85,6 @@ const ProfileHeader = props => {
       </div>
     </div>
   );
-}
-
+};
 
 export default ProfileHeader;

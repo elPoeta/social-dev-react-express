@@ -159,7 +159,20 @@ const CreateProfileForm = props => {
           component={CustomInput}
         />
         {errors.linkedin && <div className="invalid">{errors.linkedin}</div>}
-
+        <Field
+          id="git"
+          name="social.git"
+          type="text"
+          icon="fab fa-git icon"
+          autoComplete="none"
+          placeholder="Github/Gitlab/Bitbucket Profile URL "
+          classname={classnames(
+            "create-profile-input",
+            errors.git && "invalid-input"
+          )}
+          component={CustomInput}
+        />
+        {errors.git && <div className="invalid">{errors.git}</div>}
         <Field
           id="twitter"
           name="social.twitter"
