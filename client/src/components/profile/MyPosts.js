@@ -32,7 +32,7 @@ class MyPosts extends Component {
   render() {
     const { posts, loading } = this.props.post;
     let postContent;
-    if (posts === null || loading || posts.length === 0) {
+    if (posts === null || loading) {
       postContent = <Spinner />;
     } else if (posts.length === 0) {
       postContent = (
@@ -44,7 +44,7 @@ class MyPosts extends Component {
             </Link>
           </p>
         </div>
-      )
+      );
     } else {
       postContent = (
         <div>
@@ -87,9 +87,9 @@ class MyPosts extends Component {
           </ul>
           <Link to="/post/createpost" className="btn-back black">
             New Post
-      </Link>
+          </Link>
         </div>
-      )
+      );
     }
     return (
       <div className="profile-container">
