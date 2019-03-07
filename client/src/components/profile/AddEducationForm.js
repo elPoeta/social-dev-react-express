@@ -97,7 +97,7 @@ const AddEducationForm = props => {
         <Field
           id="description"
           name="description"
-          placeholder="description, tell us about your job"
+          placeholder="description, tell us about your education"
           classname=""
           cols={40}
           rows={10}
