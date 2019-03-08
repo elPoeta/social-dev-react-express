@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 import jwtDecode from "jwt-decode";
 
 import App from "./components/App";
 import Home from "./components/layout/Home";
+import NotFound from "./components/layout/NotFound";
 import SignUp from "./components/auth/SignUp";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/profile/Dashboard";
@@ -63,6 +64,8 @@ ReactDOM.render(
           <Route path="/post/edit/:id" component={EditPost} />
           <Route path="/feed" component={PostFeed} />
           <Route path="/post/:id" component={Post} />
+          <Route path='/not-found' component={NotFound} />
+          <Redirect to='/not-found' />
         </Switch>
       </App>
     </BrowserRouter>

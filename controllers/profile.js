@@ -10,7 +10,7 @@ module.exports = {
                 .populate('user', ['name', 'avatar']);
             if (!profile) {
                 errors.noProfile = 'No profile for this user';
-                return res.status(404).json({});
+                return res.status(404).json(errors);
             }
             res.json(profile);
         } catch (error) {
@@ -87,6 +87,7 @@ module.exports = {
 
         try {
             const profile = await Profile.findOne({ user });
+            console.log('### ', profile);
             if (profile) {
                 const updateProfile = await Profile
                     .findOneAndUpdate(

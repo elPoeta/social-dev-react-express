@@ -9,11 +9,19 @@ import ProfileGithub from "./ProfileGithub";
 import Spinner from "../common/Spinner";
 
 class Profile extends Component {
+
   async componentDidMount() {
     if (this.props.match.params.username) {
       await this.props.getProfileUsername(this.props.match.params.username);
     }
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+      this.props.history.push('/not-found');
+    }
+  }
+
   render() {
     const { profile, loading } = this.props.profile;
     let profileContent;

@@ -8,6 +8,7 @@ module.exports = validateProfileInput = (req, res, next) => {
   if (Array.isArray(data.skills)) {
     data.skills = data.skills.join(",");
   }
+
   data.username = !isEmpty(data.username) ? data.username : "";
   data.status = !isEmpty(data.status) ? data.status : "";
   data.skills = !isEmpty(data.skills) ? data.skills : "";
@@ -34,30 +35,30 @@ module.exports = validateProfileInput = (req, res, next) => {
     }
   }
 
-  if (!isEmpty(data.social.youtube)) {
+  if (data.social && !isEmpty(data.social.youtube)) {
     if (!Validator.isURL(data.social.youtube)) {
       errors.youtube = "Not a valid URL";
     }
   }
 
-  if (!isEmpty(data.social.twitter)) {
+  if (data.social && !isEmpty(data.social.twitter)) {
     if (!Validator.isURL(data.social.twitter)) {
       errors.twitter = "Not a valid URL";
     }
   }
 
-  if (!isEmpty(data.social.facebook)) {
+  if (data.social && !isEmpty(data.social.facebook)) {
     if (!Validator.isURL(data.social.facebook)) {
       errors.facebook = "Not a valid URL";
     }
   }
 
-  if (!isEmpty(data.social.linkedin)) {
+  if (data.social && !isEmpty(data.social.linkedin)) {
     if (!Validator.isURL(data.social.linkedin)) {
       errors.linkedin = "Not a valid URL";
     }
   }
-  if (!isEmpty(data.social.git)) {
+  if (data.social && !isEmpty(data.social.git)) {
     if (!Validator.isURL(data.social.git)) {
       errors.git = "Not a valid URL";
     }
